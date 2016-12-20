@@ -3,22 +3,22 @@
     <property name="created">2016-11-01T23:59:18</property>
     <property name="ide">WebStorm</property>
     <property name="ideVersion">2016.2.4.0.0</property>
-    <property name="modified">2016-11-28T11:41:16</property>
+    <property name="modified">2016-12-12T16:21:55</property>
     <property name="originalScheme">Solarized Light Original</property>
   </metaInfo>
   <option name="LINE_SPACING" value="1.0500001" />
   <font>
     <option name="EDITOR_FONT_NAME" value="Fira Code" />
-    <option name="EDITOR_FONT_SIZE" value="32" />
+    <option name="EDITOR_FONT_SIZE" value="21" />
   </font>
   <font>
     <option name="EDITOR_FONT_NAME" value="Ubuntu Mono" />
-    <option name="EDITOR_FONT_SIZE" value="32" />
+    <option name="EDITOR_FONT_SIZE" value="21" />
   </font>
   <option name="EDITOR_LIGATURES" value="true" />
   <console-font>
     <option name="EDITOR_FONT_NAME" value="Fira Code" />
-    <option name="EDITOR_FONT_SIZE" value="26" />
+    <option name="EDITOR_FONT_SIZE" value="16" />
   </console-font>
   <console-font>
     <option name="EDITOR_FONT_NAME" value="Ubuntu Mono" />
