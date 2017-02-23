@@ -1,14 +1,13 @@
 set -g -x PATH $HOME/.local/bin $PATHTH /usr/local/bin $PATH
 set -g -x PATH $HOME/opt/syncthing $PATH
 set -g -x PATH $HOME/opt/scripts $PATH
-set -g theme_date_format "+%a %m/%d %H:%M"
-set -g theme_color_scheme light
-set -g theme_color_scheme solarized-light
+set -g theme_date_format "+%H:%M %a %m/%d"
+set -g theme_color_scheme dark 
+set -g theme_color_scheme tomorrow-night 
 
 # Base16 Shell
 if status --is-interactive
-    #eval sh $HOME/.config/base16-shell/scripts/base16-solar-flare.sh
-    eval sh $HOME/.config/base16-shell/scripts/base16-solarized-light.sh
+  eval sh $HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh
 end
 
 alias -="cd -"
