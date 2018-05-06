@@ -1,14 +1,5 @@
 <scheme name="Tomorrow Night Child" version="142" parent_scheme="Default">
   <option name="FONT_SCALE" value="1.75" />
-  <font>
-    <option name="EDITOR_FONT_NAME" value="Fira Code" />
-    <option name="EDITOR_FONT_SIZE" value="32" />
-  </font>
-  <font>
-    <option name="EDITOR_FONT_NAME" value="Ubuntu Mono" />
-    <option name="EDITOR_FONT_SIZE" value="32" />
-  </font>
-  <option name="EDITOR_LIGATURES" value="true" />
   <console-font>
     <option name="EDITOR_FONT_NAME" value="Fira Code" />
     <option name="EDITOR_FONT_SIZE" value="27" />
