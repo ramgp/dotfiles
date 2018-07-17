@@ -3,7 +3,7 @@
     <property name="created">2018-05-06T05:16:59</property>
     <property name="ide">WebStorm</property>
     <property name="ideVersion">2018.1.2.0.0</property>
-    <property name="modified">2018-06-30T15:59:45</property>
+    <property name="modified">2018-07-17T12:47:26</property>
     <property name="originalScheme">Atom One Dark Child</property>
   </metaInfo>
   <colors>
@@ -179,14 +179,16 @@
     </option>
     <option name="BREADCRUMBS_DEFAULT">
       <value>
-        <option name="FOREGROUND" value="607d8b" />
+        <option name="FOREGROUND" value="777c85" />
         <option name="BACKGROUND" value="282c34" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="BREADCRUMBS_HOVERED">
       <value>
-        <option name="FOREGROUND" value="ffffff" />
-        <option name="BACKGROUND" value="2979ff" />
+        <option name="FOREGROUND" value="c3d3de" />
+        <option name="BACKGROUND" value="287bde" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="BREADCRUMBS_INACTIVE">
