@@ -3,7 +3,7 @@
     <property name="created">2018-05-06T05:16:59</property>
     <property name="ide">WebStorm</property>
     <property name="ideVersion">2018.1.2.0.0</property>
-    <property name="modified">2018-11-30T14:07:00</property>
+    <property name="modified">2019-07-23T13:10:37</property>
     <property name="originalScheme">Atom One Dark Child</property>
   </metaInfo>
   <colors>
@@ -546,6 +546,7 @@
     <option name="DEFAULT_CONSTANT">
       <value>
         <option name="FOREGROUND" value="d19a66" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="DEFAULT_DOC_COMMENT">
@@ -593,7 +594,8 @@
     </option>
     <option name="DEFAULT_GLOBAL_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="d19a66" />
+        <option name="FOREGROUND" value="e06c75" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="DEFAULT_IDENTIFIER">
@@ -1292,6 +1294,9 @@
         <option name="FOREGROUND" value="61aeef" />
       </value>
     </option>
+    <option name="JS.GLOBAL_VARIABLE" baseAttributes="DEFAULT_GLOBAL_VARIABLE" />
+    <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD" />
+    <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE" />
     <option name="JSON.KEYWORD">
       <value>
         <option name="FOREGROUND" value="d19a66" />
