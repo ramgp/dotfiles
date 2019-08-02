@@ -1,0 +1,42 @@
+[push]
+  default = current
+[core]
+  trustctime = false
+  autocrlf = input
+  editor = "subl -n -w"
+  filemode = false
+[user]
+  name = Ramon Garcia-Perez
+  email = ramgarcia@outlook.com
+[color]
+  ui = true
+  branch = auto
+  diff = auto
+  status = auto
+[merge]
+  tool = vimdiff
+[mergetool]
+  keeptemporaries = false
+  keepbackups = false
+  prompt = false
+  trustexitcode = false
+[alias]
+  last = log -1 --stat
+  st = status
+  ci = commit
+  co = checkout
+  df = diff
+  dft = difftool
+  mgt = mergetool
+  cp = cherry-pick
+  cl = clone
+  sst = status -sb
+  lg2 = log -p
+  lol = log --graph --decorate --oneline
+  lola = log --graph --decorate --oneline --all
+  br = branch
+  unstage = reset HEAD --
+  undocommit = reset HEAD~
+  dc = diff --cached
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+
