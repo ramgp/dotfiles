@@ -3,13 +3,13 @@
     <property name="created">2018-05-06T05:16:59</property>
     <property name="ide">WebStorm</property>
     <property name="ideVersion">2018.1.2.0.0</property>
-    <property name="modified">2019-07-23T13:10:37</property>
+    <property name="modified">2019-10-23T01:26:14</property>
     <property name="originalScheme">Atom One Dark Child</property>
   </metaInfo>
   <colors>
     <option name="ADDED_LINES_COLOR" value="98c379" />
     <option name="ANNOTATIONS_COLOR" value="fffbf7" />
-    <option name="CARET_COLOR" value="557ecf" />
+    <option name="CARET_COLOR" value="6cdada" />
     <option name="CARET_ROW_COLOR" value="2c323c" />
     <option name="CONSOLE_BACKGROUND_KEY" value="263238" />
     <option name="DELETED_LINES_COLOR" value="f07178" />
@@ -40,6 +40,7 @@
     <option name="INDENT_GUIDE" value="37474f" />
     <option name="INFORMATION_HINT" value="282c34" />
     <option name="LINE_NUMBERS_COLOR" value="777c85" />
+    <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="6cdada" />
     <option name="METHOD_SEPARATORS_COLOR" value="2e3c43" />
     <option name="MODIFIED_LINES_COLOR" value="e5c17c" />
     <option name="MT_ADDED" value="73c990" />
@@ -1297,14 +1298,9 @@
     <option name="JS.GLOBAL_VARIABLE" baseAttributes="DEFAULT_GLOBAL_VARIABLE" />
     <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD" />
     <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE" />
-    <option name="JSON.KEYWORD">
-      <value>
-        <option name="FOREGROUND" value="d19a66" />
-      </value>
-    </option>
     <option name="JSON.PROPERTY_KEY">
       <value>
-        <option name="FOREGROUND" value="c679dd" />
+        <option name="FOREGROUND" value="e06c75" />
       </value>
     </option>
     <option name="JSP_DIRECTIVE_NAME">
