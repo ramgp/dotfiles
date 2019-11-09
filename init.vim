@@ -1,25 +1,28 @@
-syntax on
+if !exists("g:syntax_on")
+  syntax enable
+endif
+
 set encoding=utf-8
 
 let g:airline_powerline_fonts = 1
 
 call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'dense-analysis/ale'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-surround'
+  Plug 'dense-analysis/ale'
 
-" On-demand loading
-Plug 'joshdick/onedark.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+  " On-demand loading
+  Plug 'joshdick/onedark.vim'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+  " Plugin outside ~/.vim/plugged with post-update hook
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 call plug#end()
 
 set number
-syntax enable
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
