@@ -3,38 +3,21 @@
     <property name="created">2016-11-01T23:59:18</property>
     <property name="ide">WebStorm</property>
     <property name="ideVersion">2016.2.4.0.0</property>
-    <property name="modified">2016-12-12T16:21:55</property>
+    <property name="modified">2020-01-15T11:09:55</property>
     <property name="originalScheme">Solarized Light Original</property>
   </metaInfo>
-  <option name="LINE_SPACING" value="1.0500001" />
-  <font>
-    <option name="EDITOR_FONT_NAME" value="Fira Code" />
-    <option name="EDITOR_FONT_SIZE" value="21" />
-  </font>
-  <font>
-    <option name="EDITOR_FONT_NAME" value="Ubuntu Mono" />
-    <option name="EDITOR_FONT_SIZE" value="21" />
-  </font>
-  <option name="EDITOR_LIGATURES" value="true" />
-  <console-font>
-    <option name="EDITOR_FONT_NAME" value="Fira Code" />
-    <option name="EDITOR_FONT_SIZE" value="16" />
-  </console-font>
-  <console-font>
-    <option name="EDITOR_FONT_NAME" value="Ubuntu Mono" />
-    <option name="EDITOR_FONT_SIZE" value="26" />
-  </console-font>
-  <option name="CONSOLE_LIGATURES" value="true" />
   <colors>
     <option name="ADDED_LINES_COLOR" value="baeeba" />
     <option name="ANNOTATIONS_COLOR" value="586e75" />
     <option name="ANNOTATIONS_MERGED_COLOR" value="586e75" />
-    <option name="CARET_COLOR" value="dc322f" />
+    <option name="CARET_COLOR" value="45c4d5" />
     <option name="CARET_ROW_COLOR" value="eee8d5" />
     <option name="CONSOLE_BACKGROUND_KEY" value="fdf6e3" />
+    <option name="DELETED_LINES_COLOR" value="dc322f" />
     <option name="GUTTER_BACKGROUND" value="eee8d5" />
     <option name="INDENT_GUIDE" value="eee8d5" />
     <option name="LINE_NUMBERS_COLOR" value="93a1a1" />
+    <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="45c4d5" />
     <option name="METHOD_SEPARATORS_COLOR" value="eee8d5" />
     <option name="MODIFIED_LINES_COLOR" value="bccff9" />
     <option name="NOTIFICATION_BACKGROUND" value="eee8d5" />
@@ -180,6 +163,12 @@
     <option name="BASH.VAR_USE_COMPOSED">
       <value>
         <option name="FOREGROUND" value="cb4b16" />
+      </value>
+    </option>
+    <option name="BREADCRUMBS_HOVERED">
+      <value>
+        <option name="FOREGROUND" value="585858" />
+        <option name="BACKGROUND" value="ccccff" />
       </value>
     </option>
     <option name="BREAKPOINT_ATTRIBUTES">
@@ -801,7 +790,6 @@
     <option name="DEFAULT_KEYWORD">
       <value>
         <option name="FOREGROUND" value="6c71c4" />
-        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="DEFAULT_LINE_COMMENT">
