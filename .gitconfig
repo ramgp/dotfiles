@@ -22,9 +22,14 @@
   trustexitcode = false
 [alias]
   last = log -1 --stat
-  st = status
-  ci = commit
+  a = add
+  ca = commit -a
+  cam = commit -am
+  cm = commit -m
+  s = status
   co = checkout
+  cob = checkout -b
+  pu = push -u
   df = diff
   dft = difftool
   mgt = mergetool
