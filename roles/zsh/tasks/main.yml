@@ -25,17 +25,17 @@
     dest: "{{dotfiles_user_home}}/.zshenv"
     state: link
 
-- name: Check for pretzo installation
-  stat: "path={{xdg_config_home}}/zsh/pretzo"
-  register: pretzo_stat
+- name: Check for prezto installation
+  stat: "path={{xdg_config_home}}/zsh/prezto"
+  register: prezto_stat
 
-- name: Clone pretzo repository
+- name: Clone prezto repository
   git:
-    repo: git@github.com/sorin-ionescu/prezto.git
-    dest: "{{xdg_config_home}}/zsh/pretzo"
-  when: not pretzo_stat.stat.exists
+    repo: https://github.com/sorin-ionescu/prezto.git
+    dest: "{{xdg_config_home}}/zsh/prezto"
+  when: not prezto_stat.stat.exists
 
-- name: Install pretzo
+- name: Install prezto
   shell: >
     setopt EXTENDED_GLOB
     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
@@ -56,19 +56,19 @@
   command: rm "{{xdg_config_home}}/zsh/zshrc"
   when: zshrc_stat.stat.exists
 
-- name: Check for zpretzorc
-  stat: path="{{xdg_config_home}}/zsh/zpretzorc"
-  register: zpretzorc_stat
+- name: Check for zpreztorc
+  stat: path="{{xdg_config_home}}/zsh/zpreztorc"
+  register: zpreztorc_stat
 
-- name: Back up zpretzorc
-  command: mv "{{xdg_config_home}}/zsh/zpretzorc {{xdg_config_home}}/zsh/zpretzorc.bak"
+- name: Back up zpreztorc
+  command: mv "{{xdg_config_home}}/zsh/zpreztorc {{xdg_config_home}}/zsh/zpreztorc.bak"
   args:
-    creates: "{{xdg_config_home}}/zsh/zpretzorc.bak"
-  when: zpretzorc_stat.stat.exists
+    creates: "{{xdg_config_home}}/zsh/zpreztorc.bak"
+  when: zpreztorc_stat.stat.exists
 
-- name: Remove zpretzorc
-  command: rm "{{xdg_config_home}}/zsh/zpretzorc"
-  when: zpretzorc.stat.exists
+- name: Remove zpreztorc
+  command: rm "{{xdg_config_home}}/zsh/zpreztorc"
+  when: zpreztorc.stat.exists
 
 - name: Symlink all zsh config files
   file:
@@ -77,7 +77,7 @@
     state: link
   with_items:
     - "zshrc"
-    - "zpretzorc"
+    - "zpreztorc"
     - "p10k.zsh"
 # - name: Symlink .zshrc
 #   file:

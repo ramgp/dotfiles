@@ -1,6 +1,6 @@
 - name: Clone fzf repository to /tmp
   git:
-    repo: git@github.com:junegunn/fzf.git
+    repo: https://github.com:junegunn/fzf.git
     dest: "/tmp/fzf"
 
 - name: Install fzf
