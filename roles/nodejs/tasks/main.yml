@@ -1,0 +1,7 @@
+- name: Install latest nodejs lts with nvm
+  command: nvm install {{node_version}}
+
+- name: Install "yarn" node.js package globally
+  npm:
+    name: yarn
+    global: yes

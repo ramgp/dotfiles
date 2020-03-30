@@ -1,0 +1,66 @@
+# Installation
+- include: fedora.yml
+  when: ansible_distribution == 'Fedora'
+
+- include: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Check for pretzo installation
+  stat: "path={{xdg_config_home}}/zsh/pretzo"
+  register: pretzo_stat
+
+- name: Clone pretzo repository
+  git:
+    repo: git@github.com/sorin-ionescu/prezto.git
+    dest: "{{xdg_config_home}}/zsh/pretzo"
+  when: not pretzo_stat.stat.exists
+
+- name: Install pretzo
+  shell: >
+    setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+      ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    done
+
+- name: Check for .zshrc
+  stat: path="{{xdg_config_home}}/zsh/zshrc"
+  register: zshrc_stat
+
+- name: Back up .zshrc
+  command: mv "{{xdg_config_home}}/zsh/zshrc {{xdg_config_home}}/zsh/zshrc.bak"
+  args:
+    creates: "{{xdg_config_home}}/zsh/zshrc.bak"
+  when: zshrc_stat.stat.exists
+
+- name: Remove .zshrc
+  command: rm "{{xdg_config_home}}/zsh/zshrc"
+  when: zshrc_stat.stat.exists
+
+- name: Check for zpretzorc
+  stat: path="{{xdg_config_home}}/zsh/zpretzorc"
+  register: zpretzorc_stat
+
+- name: Back up zpretzorc
+  command: mv "{{xdg_config_home}}/zsh/zpretzorc {{xdg_config_home}}/zsh/zpretzorc.bak"
+  args:
+    creates: "{{xdg_config_home}}/zsh/zpretzorc.bak"
+  when: zpretzorc_stat.stat.exists
+
+- name: Remove zpretzorc
+  command: rm "{{xdg_config_home}}/zsh/zpretzorc"
+  when: zpretzorc.stat.exists
+
+- name: Symlink all zsh config files
+  file:
+    src: "{{ dotfiles_home }}/roles/zsh/files/{{item}}"
+    dest: "{{xdg_config_home}}/zsh/{{item}}"
+    state: link
+  with_items:
+    - "zshrc"
+    - "zpretzorc"
+    - "p10k.zsh"
+# - name: Symlink .zshrc
+#   file:
+#     src: "{{ dotfiles_home }}/roles/zsh/files/zshrc"
+#     dest: "{{xdg_config_home}}/zsh/zshrc"
+#     state: link

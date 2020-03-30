@@ -1,0 +1,16 @@
+- include: fedora.yml
+  when: ansible_distribution == 'Fedora'
+
+- include: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install tpm
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ xdg_config_home }}/tmux/plugins/tpm"
+
+- name: Symlink .tmux.conf
+  file:
+    src: "{{ dotfiles_home }}/roles/tmux/files/tmux.conf"
+    dest: "{{ xdg_config_home }}/tmux/.tmux.conf"
+    state: link

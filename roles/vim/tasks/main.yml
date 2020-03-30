@@ -1,0 +1,55 @@
+# Installation
+- include: fedora.yml
+  when: ansible_distribution == 'Fedora'
+
+- include: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+# Plugin manager
+- name: Make sure vim-plug directory exists
+  file: path="{{ dotfiles_user_home }}/.local/share/nvim/site/autoload" state=directory
+
+- name: Install vim-plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ dotfiles_user_home }}/.local/share/nvim/site/autoload/plug.vim"
+
+# Snippets
+- name: Makes sure UltiSnips directory exists
+  file: path="{{xdg_config_home}}/nvim/UltiSnips" state=directory
+
+- name: Symlink all snippet files
+  file:
+    src: "{{ dotfiles_home }}/roles/vim/files/{{item}}"
+    dest: "{{xdg_config_home}}/nvim/UltiSnips/{{item}}"
+    state: link
+  with_items:
+    - "javascript.snippets"
+
+# Configuration
+- name: Check if vimrc exists
+  stat: path="{{xdg_config_home}}/nvim/init.vim"
+  register: vimrc_stat
+  failed_when: False
+
+- name: Backup vimrc
+  command: mv "{{xdg_config_home}}/nvim/init.vim {{xdg_config_home}}/nvim/init.vim.bak"
+  args:
+    creates: "{{xdg_config_home}}/nvim/init.vim.bak"
+  when: vimrc_stat.stat.exists
+
+- name: Create neovim config directory
+  file:
+    path: "{{xdg_config_home}}/nvim"
+    state: directory
+    mode: "0755"
+
+- name: Symlink vimrc to nvim/init.vim
+  file:
+    src: "{{ dotfiles_home }}/roles/vim/files/vimrc"
+    dest: "{{xdg_config_home}}/nvim/init.vim"
+    state: link
+
+- name: Install plugins
+  command: vim +PlugInstall +qall
+  when: vim_install_plugins

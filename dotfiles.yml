@@ -1,0 +1,33 @@
+- name: Set up local dev workstation
+  hosts: local
+  roles:
+    - role: base
+      tags:
+        - base
+    - role: git
+      tags:
+        - git
+    - role: base16-shell
+      tags:
+        - base16-shell
+    - role: zsh
+      tags:
+        - zsh
+    - role: fzf
+      tags:
+        - fzf
+    - role: vim
+      tags:
+        - vim
+    - role: tmux
+      tags:
+        - tmux
+    # - role: asdf
+    #   tags:
+    #     - asdf
+    # - role: ruby
+    #   tags:
+    #     - ruby
+    - role: nodejs
+      tags:
+        - nodejs
