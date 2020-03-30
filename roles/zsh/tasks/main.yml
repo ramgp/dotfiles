@@ -5,6 +5,26 @@
 - include: ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
 
+- name: Check for .zshenv
+  stat: path="{{dotfiles_user_home}}/.zshenv"
+  register: zshenv_stat
+
+- name: Back up .zshenv
+  command: mv "{{dotfiles_user_home}}/.zshenv {{dotfiles_user_home}}/.zshenv.bak"
+  args:
+    creates: "{{dotfiles_user_home}}/.zshenv.bak"
+  when: zshenv_stat.stat.exists
+
+- name: Remove .zshrc
+  command: rm "{{xdg_config_home}}/.zshenv"
+  when: zshenv_stat.stat.exists
+
+- name: Symlink .zshenv
+  file:
+    src: "{{ dotfiles_home }}/.zshenv"
+    dest: "{{dotfiles_user_home}}/.zshenv"
+    state: link
+
 - name: Check for pretzo installation
   stat: "path={{xdg_config_home}}/zsh/pretzo"
   register: pretzo_stat
