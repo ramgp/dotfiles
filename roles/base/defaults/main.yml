@@ -6,7 +6,7 @@ apt_packages:
   - ripgrep
   - bat
   - micro
-  - p7zip
+  - p7zip-full
 
   # rbenv-build deps
   - autoconf

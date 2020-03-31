@@ -10,13 +10,13 @@
   register: zshenv_stat
 
 - name: Back up .zshenv
-  command: mv "{{dotfiles_user_home}}/.zshenv {{dotfiles_user_home}}/.zshenv.bak"
+  command: cp "{{dotfiles_user_home}}/.zshenv" "{{dotfiles_user_home}}/.zshenv.bak"
   args:
     creates: "{{dotfiles_user_home}}/.zshenv.bak"
   when: zshenv_stat.stat.exists
 
-- name: Remove .zshrc
-  command: rm "{{xdg_config_home}}/.zshenv"
+- name: Remove .zshenv
+  command: rm "{{dotfiles_user_home}}/.zshenv"
   when: zshenv_stat.stat.exists
 
 - name: Symlink .zshenv
@@ -26,54 +26,72 @@
     state: link
 
 - name: Check for prezto installation
-  stat: "path={{xdg_config_home}}/zsh/prezto"
-  register: prezto_stat
+  stat: "path={{xdg_config_home}}/zsh/.zprezto"
+  register: zprezto_stat
 
 - name: Clone prezto repository
   git:
     repo: https://github.com/sorin-ionescu/prezto.git
-    dest: "{{xdg_config_home}}/zsh/prezto"
-  when: not prezto_stat.stat.exists
+    dest: "{{xdg_config_home}}/zsh/.zprezto"
+  when: not zprezto_stat.stat.exists
 
-- name: Install prezto
-  shell: >
-    setopt EXTENDED_GLOB
-    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-      ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-    done
+#- name: Config extended glob
+#  shell: setopt EXTENDED_GLOB
+#  args:
+#    executable: /usr/bin/zsh
+
+# - name: Install prezto
+#   shell: >
+#     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+#       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+#     done
+#   args:
+#     executable: /usr/bin/zsh
+
+- name: Symlink prezto runcoms to ZDOTDIR
+  file:
+    src: "{{ xdg_config_home }}/zsh/.zprezto/runcoms/{{item}}"
+    dest: "{{xdg_config_home}}/zsh/.{{item}}"
+    state: link
+    force: yes
+  with_items:
+    - zlogin
+    - zlogout
+    - zprofile
+    - zshenv
 
 - name: Check for .zshrc
-  stat: path="{{xdg_config_home}}/zsh/zshrc"
+  stat: path="{{xdg_config_home}}/zsh/.zshrc"
   register: zshrc_stat
 
 - name: Back up .zshrc
-  command: mv "{{xdg_config_home}}/zsh/zshrc {{xdg_config_home}}/zsh/zshrc.bak"
+  command: cp "{{xdg_config_home}}/zsh/.zshrc" "{{xdg_config_home}}/zsh/.zshrc.bak"
   args:
-    creates: "{{xdg_config_home}}/zsh/zshrc.bak"
+    creates: "{{xdg_config_home}}/zsh/.zshrc.bak"
   when: zshrc_stat.stat.exists
 
 - name: Remove .zshrc
-  command: rm "{{xdg_config_home}}/zsh/zshrc"
+  command: rm "{{xdg_config_home}}/zsh/.zshrc"
   when: zshrc_stat.stat.exists
 
 - name: Check for zpreztorc
-  stat: path="{{xdg_config_home}}/zsh/zpreztorc"
+  stat: path="{{xdg_config_home}}/zsh/.zpreztorc"
   register: zpreztorc_stat
 
 - name: Back up zpreztorc
-  command: mv "{{xdg_config_home}}/zsh/zpreztorc {{xdg_config_home}}/zsh/zpreztorc.bak"
+  command: cp "{{xdg_config_home}}/zsh/.zpreztorc" "{{xdg_config_home}}/zsh/.zpreztorc.bak"
   args:
-    creates: "{{xdg_config_home}}/zsh/zpreztorc.bak"
+    creates: "{{xdg_config_home}}/zsh/.zpreztorc.bak"
   when: zpreztorc_stat.stat.exists
 
 - name: Remove zpreztorc
-  command: rm "{{xdg_config_home}}/zsh/zpreztorc"
-  when: zpreztorc.stat.exists
+  command: rm "{{xdg_config_home}}/zsh/.zpreztorc"
+  when: zpreztorc_stat.stat.exists
 
 - name: Symlink all zsh config files
   file:
     src: "{{ dotfiles_home }}/roles/zsh/files/{{item}}"
-    dest: "{{xdg_config_home}}/zsh/{{item}}"
+    dest: "{{xdg_config_home}}/zsh/.{{item}}"
     state: link
   with_items:
     - "zshrc"
