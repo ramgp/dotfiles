@@ -28,6 +28,9 @@
     # - role: ruby
     #   tags:
     #     - ruby
+    - role: nvm
+      tags:
+        - nvm
     - role: nodejs
       tags:
         - nodejs

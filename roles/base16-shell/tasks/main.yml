@@ -1,4 +1,10 @@
-- name: Clone base16-shell repository to /tmp
+- name: Clone base16-shell repository to {{xdg_config_home}}/base16-shell
   git:
     repo: https://github.com/chriskempson/base16-shell.git
     dest: "{{xdg_config_home}}/base16-shell"
+
+- name: Set base16 one dark as terminal theme
+  file:
+    src: "{{xdg_config_home}}/base16-shell/scripts/base16-onedark.sh"
+    dest: "{{dotfiles_user_home}}/.base16_theme"
+    state: link

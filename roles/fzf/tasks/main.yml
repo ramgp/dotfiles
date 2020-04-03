@@ -1,8 +1,7 @@
-- name: Clone fzf repository to /tmp
+- name: Clone fzf repository to {{xdg_data_home}}/fzf
   git:
-    repo: https://github.com:junegunn/fzf.git
-    dest: "/tmp/fzf"
+    repo: https://github.com/junegunn/fzf.git
+    dest: "{{xdg_data_home}}/fzf"
 
 - name: Install fzf
-  shell: >
-    "/tmp/fzf/install --all --xdg"
+  command: "{{xdg_data_home}}/fzf/install --all --xdg --no-fish"

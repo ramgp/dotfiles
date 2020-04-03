@@ -1,2 +1,3 @@
-export PATH=${PATH}:$ZSH/bin
-export PATH=$PATH:/$HOME/.dotfiles/bin
+PATH="${HOME}/.rbenv/bin:${HOME}/.local/bin:$PATH"
+PATH="${PATH}:$ZSH/bin"
+PATH="${PATH}:$HOME/.dotfiles/bin"

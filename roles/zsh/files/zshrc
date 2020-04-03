@@ -59,21 +59,6 @@ fi
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-#NPM_PACKAGES="${HOME}/.npm-packages"
-#NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-#PATH="$NPM_PACKAGES/bin:$PATH"
-PATH="${HOME}/.local/bin:$PATH"
-
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-# command
-#unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-# MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-
-#source /usr/share/doc/fzf/examples/key-bindings.zsh
-
 # Use rg to respect .gitignore
 export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
 
@@ -81,3 +66,7 @@ source $HOME/.dotfiles/roles/zsh/aliases.zsh
 source $HOME/.dotfiles/roles/zsh/config.zsh
 source $HOME/.dotfiles/roles/zsh/env.zsh
 source $HOME/.dotfiles/roles/zsh/path.zsh
+
+#eval "$(rbenv init -)"
+
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
