@@ -1,5 +1,14 @@
+- apt_repository: Add git-core ppa
+    repo: ppa:git-core/ppa
+    update_cache: no
+
+- apt_repository: Add chrome ppa
+    repo: deb http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+    filename: google-chrome    
+
 - name: Upgrade apt
-  apt: upgrade=yes
+  apt: upgrade=full
   when: package_upgrade
   become: yes
   become_user: root
@@ -7,8 +16,7 @@
 
 - name: Install apt packages
   apt:
-    name: "{{ item }}"
-    update_cache: yes
+    pkg: "{{ apt_packages }}"
   become: yes
   become_user: root
   become_method: sudo
@@ -16,10 +24,8 @@
 
 - name: Remove apt packages
   apt:
-    name: "{{ item }}"
-    update_cache: yes
+    pkg: "{{ remove_packages }}"
     state: absent
   become: yes
   become_user: root
   become_method: sudo
-  loop: "{{ remove_packages }}"

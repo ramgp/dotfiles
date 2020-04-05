@@ -9,7 +9,7 @@ fi
 
 if ! [ -x "$(command -v ansible)" ]; then
   if [ -x "$(command -v apt)" ]; then
-    sudo apt install ansible
+    sudo apt install ansible -y
   elif [ -x "$(command -v dnf)" ]; then
     sudo dnf install ansible
   else

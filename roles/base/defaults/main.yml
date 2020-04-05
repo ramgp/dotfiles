@@ -1,5 +1,6 @@
 package_upgrade: yes
 apt_packages:
+  - git
   - build-essential
   - curl
   - htop
@@ -7,11 +8,11 @@ apt_packages:
   - bat
   - micro
   - p7zip-full
+  - guake
 
   # rbenv-build deps
   - autoconf
   - bison
-  - build-essential
   - libssl-dev
   - libyaml-dev
   - libreadline6-dev
@@ -22,7 +23,7 @@ apt_packages:
   - libgdbm-dev
 
   # GUI
-  # - chromium-browser
+  - google-chrome
 
 dnf_packages:
   - htop
@@ -45,5 +46,17 @@ dnf_packages:
   # - chromium-browser
 
 remove_packages:
-  - rhythmbox
-  - thunderbird
+  - '?name(rhythmbox)'
+  - '?name(thunderbird)'
+  - fonts-noto-cjk
+  - fonts-kacst-one
+  - fonts-lao
+  - fonts-lklug-sinhala
+  - fonts-sil-abyssinica
+  - fonts-sil-padauk
+  - fonts-tibetan-machine
+  - fonts-thai-tlwg
+  - fonts-lohit-guru
+  - fonts-wqy-microhei
+  - fonts-lohit-guru
+  - fonts-guru-extra
