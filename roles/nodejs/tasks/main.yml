@@ -1,7 +1,9 @@
 - name: Install latest nodejs lts with nvm
-  command: nvm install {{node_version}}
+  shell: source "{{xdg_config_home}}/zsh/.zshrc" && nvm install {{node_version}}
+  args:
+    executable: /usr/bin/zsh
 
-- name: Install "yarn" node.js package globally
-  npm:
-    name: yarn
-    global: yes
+- name: Install nodejs tools
+  shell: source "{{xdg_config_home}}/zsh/.zshrc" && npm i -g cloc grunt-cli npmlist nws diff-so-fancy
+  args:
+    executable: /usr/bin/zsh

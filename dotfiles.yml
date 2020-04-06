@@ -16,9 +16,9 @@
     - role: fzf
       tags:
         - fzf
-    - role: vim
-      tags:
-        - vim
+#    - role: vim
+#      tags:
+#        - vim
     - role: tmux
       tags:
         - tmux

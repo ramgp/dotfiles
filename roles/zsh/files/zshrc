@@ -34,8 +34,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 if [[ "${terminfo[kpp]}" != "" ]]; then
   bindkey "${terminfo[kpp]}" up-line-or-history       # [PageUp] - Up a line of history
 fi

@@ -4,11 +4,12 @@ apt_packages:
   - build-essential
   - curl
   - htop
-  - ripgrep
+#  - ripgrep
   - bat
   - micro
   - p7zip-full
   - guake
+  - neofetch
 
   # rbenv-build deps
   - autoconf
@@ -23,7 +24,11 @@ apt_packages:
   - libgdbm-dev
 
   # GUI
-  - google-chrome
+  - google-chrome-stable
+  - chrome-gnome-shell
+  - gnome-shell-extension-prefs
+  - gnome-tweaks
+  - sublime-text
 
 dnf_packages:
   - htop
@@ -46,8 +51,6 @@ dnf_packages:
   # - chromium-browser
 
 remove_packages:
-  - '?name(rhythmbox)'
-  - '?name(thunderbird)'
   - fonts-noto-cjk
   - fonts-kacst-one
   - fonts-lao
