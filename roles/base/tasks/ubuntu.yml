@@ -74,22 +74,14 @@
 #    url: https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb
 #    dest: /tmp/ripgrep.deb
 
-- name: Remove rhythmbox
-  command: apt remove --purge '?name(rhythmbox)'
+- name: Remove unused packages
+  command: apt purge "{{ ubuntu_unused_packages }}"
   become: yes
   become_user: root
   become_method: sudo
 
-- name: Remove thunderbird
-  command: apt remove --purge '?name(thunderbird)'
-  become: yes
-  become_user: root
-  become_method: sudo
-
-- name: Remove apt packages
-  apt:
-    pkg: "{{ remove_packages }}"
-    state: absent
+- name: Remove unused fonts
+  command: apt purge "{{ ubuntu_unused_fonts }}"
   become: yes
   become_user: root
   become_method: sudo

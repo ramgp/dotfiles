@@ -4,7 +4,7 @@ apt_packages:
   - build-essential
   - curl
   - htop
-#  - ripgrep
+  #  - ripgrep
   - bat
   - micro
   - p7zip-full
@@ -50,16 +50,50 @@ dnf_packages:
   # GUI
   # - chromium-browser
 
-remove_packages:
-  - fonts-noto-cjk
-  - fonts-kacst-one
-  - fonts-lao
-  - fonts-lklug-sinhala
-  - fonts-sil-abyssinica
-  - fonts-sil-padauk
-  - fonts-tibetan-machine
-  - fonts-thai-tlwg
-  - fonts-lohit-guru
-  - fonts-wqy-microhei
-  - fonts-lohit-guru
-  - fonts-guru-extra
+ubuntu_unused_fonts: >
+  '?name(fonts-tlwg)' \
+  '?name(fonts-kacst)' \
+  '?name(fonts-lohit)' \
+  '?name(fonts-smc)' \
+  '?name(fonts-samyak)' \
+  fonts-noto-cjk \
+  fonts-noto-mono \
+  fonts-lao \
+  fonts-lklug-sinhala \
+  fonts-sil-abyssinica \
+  fonts-sil-padauk \
+  fonts-tibetan-machine \
+  fonts-thai-tlwg \
+  fonts-wqy-microhei \
+  fonts-guru-extra \
+  fonts-beng-extra \
+  fonts-beng \
+  fonts-deva \
+  fonts-deva-extra \
+  fonts-droid-fallback \
+  fonts-gargi \
+  fonts-gubbi \
+  fonts-gujr-extra \
+  fonts-gujr \
+  fonts-kalapi \
+  fonts-khmeros-core \
+  fonts-knda \
+  fonts-mlym \
+  fonts-nakula \
+  fonts-navilu \
+  fonts-orya-extra \
+  fonts-orya \
+  fonts-pagul \
+  fonts-sahadeva \
+  fonts-sarai \
+  fonts-taml \
+  fonts-telu-extra \
+  fonts-telu \
+  fonts-yrsa-rasa \
+  fonts-takao-pgothic \
+  fonts-nanum \
+  fonts-lato
+
+ubuntu_unused_packages: >
+  '?name(thunderbird)' \
+  '?name(rhythmbox)'
