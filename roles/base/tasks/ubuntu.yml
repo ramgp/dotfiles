@@ -68,20 +68,14 @@
   become: yes
   become_user: root
   become_method: sudo
+# - name: Remove unused packages
+#   command: apt purge "{{ ubuntu_unused_packages }}"
+#   become: yes
+#   become_user: root
+#   become_method: sudo
 
-#- name: Download ripgrep deb package from github
-#  get_url:
-#    url: https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb
-#    dest: /tmp/ripgrep.deb
-
-- name: Remove unused packages
-  command: apt purge "{{ ubuntu_unused_packages }}"
-  become: yes
-  become_user: root
-  become_method: sudo
-
-- name: Remove unused fonts
-  command: apt purge "{{ ubuntu_unused_fonts }}"
-  become: yes
-  become_user: root
-  become_method: sudo
+# - name: Remove unused fonts
+#   command: apt purge "{{ ubuntu_unused_fonts }}"
+#   become: yes
+#   become_user: root
+#   become_method: sudo

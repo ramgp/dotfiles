@@ -1,11 +1,14 @@
-- name: Add ruby plugin
-  command: "asdf plugin-add ruby"
-  register: ruby_add
-  failed_when: ruby_add == 2
+- name: Install ruby {{version}}
+  shell: source "{{xdg_config_home}}/zsh/.zshrc" && rbenv install ruby {{version}}
+  args:
+    executable: /usr/bin/zsh
 
-- name: "Install ruby versions"
-  command: asdf install ruby {{item}}
-  loop: "{{versions}}"
+- name: Set global version for ruby to {{version}}
+  shell: source "{{xdg_config_home}}/zsh/.zshrc" && rbenv global {{version}}
+  args:
+    executable: /usr/bin/zsh
 
-- name: Set global version for ruby to {{versions[0]}}
-  command: "asdf global ruby {{versions[0]}}"
+- name: Install ruby gems
+  shell: source "{{xdg_config_home}}/zsh/.zshrc" && gem install compass
+  args:
+    executable: /usr/bin/zsh

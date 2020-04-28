@@ -16,18 +16,15 @@
     - role: fzf
       tags:
         - fzf
-#    - role: vim
-#      tags:
-#        - vim
+    #    - role: vim
+    #      tags:
+    #        - vim
     - role: tmux
       tags:
         - tmux
-    # - role: asdf
-    #   tags:
-    #     - asdf
-    # - role: ruby
-    #   tags:
-    #     - ruby
+    - role: ruby
+      tags:
+        - ruby
     - role: nvm
       tags:
         - nvm

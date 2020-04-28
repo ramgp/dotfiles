@@ -8,7 +8,7 @@ alias v="vim"
 
 alias timezsh="time zsh -i -c echo"
 
-alias tmux='TERM=xterm-256color tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
+alias tmux='TERM=xterm-256color tmux -f "$XDG_CONFIG_HOME"/tmux/.tmux.conf'
 alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh"
 alias gl="git pull --rebase"
 alias gf="git fetch origin"
