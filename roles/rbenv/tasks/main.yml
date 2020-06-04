@@ -1,5 +1,31 @@
-- name: install rbenv
-  shell: >
-    curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+# - name: install rbenv
+#   shell: >
+#     curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+#   args:
+#     executable: /usr/bin/zsh
+
+- name: Check rbenv installation
+  stat: "path={{xdg_data_home}}/rbenv"
+  register: rbenv_stat
+
+- name: Clone rbenv repository
+  git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: "{{xdg_data_home}}/rbenv"
+  when: not rbenv_stat.stat.exists
+
+- name: Build rbenv
+  shell: src/configure && make -C src
   args:
-    executable: /usr/bin/zsh
+    chdir: "{{xdg_data_home}}/rbenv"
+  when: not rbenv_stat.stat.exists
+
+- name: Check ruby-build installation
+  stat: "path={{xdg_data_home}}/rbenv/plugins/ruby-build"
+  register: ruby_build_stat
+
+- name: Clone ruby-build repository
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: "{{xdg_data_home}}/rbenv/plugins/ruby-build"
+  when: not ruby_build_stat.stat.exists
