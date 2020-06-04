@@ -64,7 +64,7 @@
 
 - name: Install ripgrep .deb package from github
   apt:
-    deb: https://github.com/BurntSushi/ripgrep/releases/download/12.0.1/ripgrep_12.0.1_amd64.deb
+    deb: https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
   become: yes
   become_user: root
   become_method: sudo
