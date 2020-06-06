@@ -3,7 +3,7 @@
   when: ansible_distribution == 'Fedora'
 
 - include: ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Pop!_OS'
 
 # Plugin manager
 - name: Make sure vim-plug directory exists

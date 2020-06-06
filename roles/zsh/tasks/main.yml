@@ -3,7 +3,7 @@
   when: ansible_distribution == 'Fedora'
 
 - include: ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Pop!_OS'
 
 - name: Check for .zshenv
   stat: path="{{dotfiles_user_home}}/.zshenv"
