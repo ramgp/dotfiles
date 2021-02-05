@@ -15,12 +15,12 @@
   become_method: sudo
   loop: "{{ dnf_packages }}"
 
-- name: Remove dnf packages
-  dnf:
-    name: "{{ item }}"
-    update_cache: yes
-    state: absent
-  become: yes
-  become_user: root
-  become_method: sudo
-  loop: "{{ remove_packages }}"
+# - name: Remove dnf packages
+#   dnf:
+#     name: "{{ item }}"
+#     update_cache: yes
+#     state: absent
+#   become: yes
+#   become_user: root
+#   become_method: sudo
+#   loop: "{{ fedora_unused_packages }}"

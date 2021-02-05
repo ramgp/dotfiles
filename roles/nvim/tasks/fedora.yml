@@ -1,3 +1,5 @@
 - name: Install vim with dnf
   dnf: name=neovim state=present
+  become: yes
+  become_user: root
   become_method: sudo
