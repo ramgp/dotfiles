@@ -38,14 +38,16 @@ dnf_packages:
   - p7zip
 
   # rbenv-build deps
-  - automake
-  - gdbm-devel
-  - libffi-devel
+  - gcc
+  - make
+  - bzip2
+  - openssl-devel
   - libyaml-devel
-  - libopenssl-devel
-  - ncurses-devel
+  - libffi-devel
   - readline-devel
   - zlib-devel
+  - gdbm-devel
+  - ncurses-devel
 
   # GUI
   # - chromium-browser
