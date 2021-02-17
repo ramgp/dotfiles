@@ -8,6 +8,9 @@ nnoremap <M-k>    :resize +2<CR>
 nnoremap <M-h>    :vertical resize -2<CR>
 nnoremap <M-l>    :vertical resize +2<CR>
 
+" <leader><leader> is more convenient than <c-^>
+nnoremap <leader><leader> <c-^>
+
 " I hate escape more than anything else
 inoremap jk <Esc>
 inoremap kj <Esc>
@@ -52,3 +55,6 @@ nnoremap tl :tabnext<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 map <C-p> :Files<CR>
+
+" Insert a hash rocket with <c-l>
+imap <c-l> <space>=><space>

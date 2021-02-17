@@ -4,11 +4,8 @@ apt_packages:
   - build-essential
   - curl
   - htop
-  #  - ripgrep
-  - bat
   - micro
   - p7zip-full
-  - guake
   - neofetch
 
   # rbenv-build deps
@@ -25,10 +22,6 @@ apt_packages:
 
   # GUI
   - google-chrome-stable
-  - chrome-gnome-shell
-  - gnome-shell-extension-prefs
-  - gnome-tweaks
-  - sublime-text
 
 dnf_packages:
   - htop

@@ -4,5 +4,5 @@
   when: ansible_distribution == 'Fedora'
 
 - include: ubuntu.yml
-  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Pop!_OS'
+  when: ansible_os_family == 'Debian'
 

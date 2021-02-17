@@ -13,7 +13,7 @@ call plug#begin('~/.local/share/nvim/site/autoload/plugged')
   Plug 'sheerun/vim-polyglot'
   " File Explorer
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  " Auto pairs for '(' '[' '{' 
+  " Auto pairs for '(' '[' '{'
   Plug 'jiangmiao/auto-pairs'
 
   Plug 'vim-airline/vim-airline'
@@ -21,4 +21,7 @@ call plug#begin('~/.local/share/nvim/site/autoload/plugged')
 
   " OneDark theme
   Plug 'joshdick/onedark.vim'
+
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 call plug#end()
