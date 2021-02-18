@@ -3,8 +3,8 @@ alias pkill="pkill -9 -f "
 alias lj='jobs'
 
 alias reload=". $ZDOTDIR/.zshrc"
-alias vi="vim"
-alias v="vim"
+alias vi="nvim"
+alias v="nvim"
 
 alias timezsh="time zsh -i -c echo"
 
@@ -13,3 +13,11 @@ alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh"
 alias gl="git pull --rebase"
 alias gf="git fetch origin"
 alias z="fasd_cd -d"
+alias myip='curl http://ipecho.net/plain; echo'
+
+if [[ (( $+commands[exa] )) ]]; then
+  alias ll="exa --icons -l --group-directories-first"
+  alias la="ll -a"
+  alias l="exa --icons -1a --group-directories-first"
+  alias lo="la -snew"
+fi

@@ -47,14 +47,18 @@ nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
 " Editor tabs
-nnoremap tn :tabnew<Space>
-nnoremap tk :tabnext<CR>
-nnoremap tj :tabnext<CR>
-nnoremap th :tabnext<CR>
-nnoremap tl :tabnext<CR>
+nnoremap <leader>n :tabnew<Space>
+nnoremap <leader>k :tabnext<CR>
+nnoremap <leader>j :tabnext<CR>
+nnoremap <leader>h :tabnext<CR>
+nnoremap <leader>l :tabnext<CR>
 
 map <C-n> :NERDTreeToggle<CR>
-map <C-p> :Files<CR>
+" map <C-p> :Files<CR>
+" fzf file fuzzy search that respects .gitignore
+" If in git directory, show only files that are committed, staged, or unstaged
+" else use regular :Files
+nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
