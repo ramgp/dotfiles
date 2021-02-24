@@ -74,3 +74,4 @@ fi
 [ -f ~$HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 [ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
+fpath+=${ZDOTDIR:-~}/.zsh_functions

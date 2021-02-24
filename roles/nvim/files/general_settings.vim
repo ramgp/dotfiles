@@ -1,7 +1,3 @@
-if !exists("g:syntax_on")
-  syntax enable                           " Enables syntax highlighing
-endif
-
 let g:mapleader = "\<Space>"
 
 set hidden                              " Required to keep multiple buffers open multiple buffers
@@ -15,7 +11,6 @@ set iskeyword+=-                      	" treat dash separated words as a word te
 set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
-set t_Co=256                            " Support 256 colors
 set conceallevel=0                      " So that I can see `` in markdown files
 set tabstop=2                           " Insert 2 spaces for a tab
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
@@ -37,10 +32,13 @@ set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 "set autochdir                           " Your working directory will always be the same as your working directory
+set nohlsearch
+set scrolloff=8
+set colorcolumn=100
+set noswapfile
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
 " You can't stop me
 cmap w!! w !sudo tee %
 
-let g:airline#extensions#tabline#fnamemod = ':t'

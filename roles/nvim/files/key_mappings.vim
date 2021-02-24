@@ -62,3 +62,6 @@ nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --excl
 
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
+
+map <leader>aa :%y+<CR>
+map <leader>dd :%d<CR>

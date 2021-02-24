@@ -11,10 +11,15 @@ hi Comment cterm=italic
 let g:onedark_hide_endofbuffer=1
 let g:onedark_terminal_italics=1
 let g:onedark_termcolors=256
+let g:gruvbox_italic=1
 
-syntax on
+if !exists("g:syntax_on")
+  syntax enable                           " Enables syntax highlighing
+endif
+
 colorscheme onedark
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme='onedark'
 
 " checks if your terminal has 24-bit color support

@@ -1,8 +1,10 @@
 set incsearch
+set number
 set relativenumber
 set showmode
 set timeoutlen=500
 set clipboard=unnamedplus
+set scrolloff=8
 
 imap jj <Esc>
 imap jk <Esc>
@@ -23,7 +25,7 @@ map <leader>n :action FileChooser.NewFolder<CR>
 map <leader>o :action OverrideMethods<CR>
 map <leader>p :action ParameterInfo<CR>
 map <leader>q :action QuickJavaDoc<CR>
-map <leader>r :action Refactor<CR>
+map <leader>r :action RenameElement<CR>
 map <leader>s :action SaveAll<CR>
 map <leader>t :action Vcs.UpdateProject<CR>
 map <leader>u :action GotoSuperMethod<CR>
