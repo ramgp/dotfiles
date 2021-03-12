@@ -10,14 +10,20 @@ call plug#begin('~/.local/share/nvim/site/autoload/plugged')
   Plug 'tpope/vim-surround'
 
   " Better Syntax Support
-  Plug 'sheerun/vim-polyglot'
+  " Plug 'sheerun/vim-polyglot'
   " File Explorer
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   " Auto pairs for '(' '[' '{'
   Plug 'jiangmiao/auto-pairs'
 
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  " Status info
+  Plug 'itchyny/lightline.vim'
+
+"  Plug 'vim-airline/vim-airline'
+"  Plug 'vim-airline/vim-airline-themes'
+
+  " Commenting
+  Plug 'tpope/vim-commentary'
 
   " OneDark theme
   Plug 'joshdick/onedark.vim'
@@ -32,4 +38,7 @@ call plug#begin('~/.local/share/nvim/site/autoload/plugged')
   Plug 'nvim-telescope/telescope.nvim'
 
   Plug 'gruvbox-community/gruvbox'
+
+  Plug 'tpope/vim-fugitive'
+  Plug 'machakann/vim-highlightedyank'
 call plug#end()

@@ -14,6 +14,7 @@ nnoremap <leader><leader> <c-^>
 " I hate escape more than anything else
 inoremap jk <Esc>
 inoremap kj <Esc>
+inoremap jj <Esc>
 
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
@@ -26,6 +27,7 @@ nnoremap <S-TAB> :bprevious<CR>
 
 " Alternate way to save
 nnoremap <C-s> :w<CR>
+" nnoremap <leader>s :w<CR>
 " Alternate way to quit
 nnoremap <C-Q> :wq!<CR>
 " Use control-c instead of escape
@@ -43,8 +45,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <Leader>o o<Esc>^Da
-nnoremap <Leader>O O<Esc>^Da
+" Delete to black hole register
+nnoremap <leader>y "_dd
 
 " Editor tabs
 nnoremap <leader>n :tabnew<Space>
@@ -63,5 +65,15 @@ nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --excl
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 
+" Copy all
 map <leader>aa :%y+<CR>
+
+" Delete all
 map <leader>dd :%d<CR>
+
+" Using lua functions
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+

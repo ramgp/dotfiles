@@ -4,7 +4,8 @@ set relativenumber
 set showmode
 set timeoutlen=500
 set clipboard=unnamedplus
-set scrolloff=8
+set scrolloff=10
+set highlightedyank
 
 imap jj <Esc>
 imap jk <Esc>
@@ -20,10 +21,12 @@ map <leader>f :action Find<CR>
 map <leader>g :action GotoLine<CR>
 map <leader>h :action Replace<CR>
 map <leader>i :action ImplementMethods<CR>
+map <leader>j :action Back<CR>
+map <leader>k :action Forward<CR>
 map <leader>m :action EditorScrollToCenter<CR>
 map <leader>n :action FileChooser.NewFolder<CR>
 map <leader>o :action OverrideMethods<CR>
-map <leader>p :action ParameterInfo<CR>
+map <leader>p :action GotoFile<CR>
 map <leader>q :action QuickJavaDoc<CR>
 map <leader>r :action RenameElement<CR>
 map <leader>s :action SaveAll<CR>
@@ -33,6 +36,7 @@ map <leader>v :action $Paste<CR>
 map <leader>w :action EditorSelectWord<CR>
 map <leader>x :action $Cut<CR>
 map <leader>y :action EditorDeleteLine<CR>
+map <leader>z :action Vcs.RollbackChangedLines<CR>
 map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
 

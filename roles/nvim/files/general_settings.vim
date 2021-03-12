@@ -33,7 +33,7 @@ set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 "set autochdir                           " Your working directory will always be the same as your working directory
 set nohlsearch
-set scrolloff=8
+set scrolloff=10
 set colorcolumn=100
 set noswapfile
 
