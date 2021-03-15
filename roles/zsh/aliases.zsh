@@ -16,7 +16,7 @@ alias gf="git fetch origin"
 alias z="fasd_cd -d"
 alias myip='curl http://ipecho.net/plain; echo'
 
-if [[ (( $+commands[exa] )) ]]; then
+if (( $+commands[exa] )); then
   alias ll="exa --icons -l --group-directories-first"
   alias la="ll -a"
   alias l="exa --icons -1a --group-directories-first"
