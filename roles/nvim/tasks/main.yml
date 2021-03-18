@@ -67,8 +67,8 @@
 
 - name: Link nvim onedark theme
   file:
-    src: "{{dotfiles_home}}/roles/nvim/files/onedark.vim"
-    dest: "{{xdg_config_home}}/nvim/themes/onedark.vim"
+    src: "{{dotfiles_home}}/roles/nvim/files/default.vim"
+    dest: "{{xdg_config_home}}/nvim/themes/default.vim"
     state: link
     force: yes
 
