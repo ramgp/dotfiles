@@ -39,6 +39,12 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 vnoremap < <gv
 vnoremap > >gv
 
+" Move highlithted line(s) down
+vnoremap J :m '>+1<CR>gv=gv
+
+" Move highlithted line(s) up
+vnoremap K :m '<-2<CR>gv=gv
+
 " Better window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -70,6 +76,9 @@ map <leader>aa :%y+<CR>
 
 " Delete all
 map <leader>dd :%d<CR>
+
+" Delete curly braces sorrounding lines
+nnoremap <leader>; di{Vkpgv=
 
 " Using lua functions
 nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>

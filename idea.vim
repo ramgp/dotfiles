@@ -16,6 +16,7 @@ map <leader>a :action $SelectAll<CR>
 map <leader>b :action GotoDeclaration<CR>
 map <leader>c :action $Copy<CR>
 map <leader>d :action EditorDuplicate<CR>
+map <leader>; di{Vkpgv=
 map <leader>e :action RecentFiles<CR>
 map <leader>f :action Find<CR>
 map <leader>g :action GotoLine<CR>
