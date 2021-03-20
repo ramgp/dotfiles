@@ -14,7 +14,7 @@ alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh"
 alias gl="git pull --rebase"
 alias gf="git fetch origin"
 alias z="fasd_cd -d"
-alias myip='curl http://ipecho.net/plain; echo'
+alias myip='curl ifconfig.co'
 
 if (( $+commands[exa] )); then
   alias ll="exa --icons -l --group-directories-first"
