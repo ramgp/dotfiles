@@ -15,6 +15,7 @@ alias gl="git pull --rebase"
 alias gf="git fetch origin"
 alias z="fasd_cd -d"
 alias myip='curl ifconfig.co'
+alias lgcm="git rev-parse --short HEAD"
 
 if (( $+commands[exa] )); then
   alias ll="exa --icons -l --group-directories-first"
