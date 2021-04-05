@@ -6,6 +6,7 @@ set timeoutlen=500
 set clipboard=unnamedplus
 set scrolloff=10
 set highlightedyank
+set surround
 
 imap jj <Esc>
 imap jk <Esc>
