@@ -10,7 +10,7 @@ alias timezsh="time zsh -i -c echo"
 
 alias tmux='TERM=xterm-256color tmux -f "$XDG_CONFIG_HOME"/tmux/.tmux.conf'
 alias tmx='TERM=xterm-256color /usr/bin/tmux -f "$HOME"/.dotfiles/.tmux.conf'
-alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh"
+alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh nosplash"
 alias gl="git pull --rebase"
 alias gf="git fetch origin"
 alias z="fasd_cd -d"
