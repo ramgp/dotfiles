@@ -7,6 +7,7 @@ set clipboard=unnamedplus
 set scrolloff=10
 set highlightedyank
 set surround
+set commentary
 
 imap jj <Esc>
 imap jk <Esc>
