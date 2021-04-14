@@ -86,3 +86,9 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
+" Inserts empty line(s) without leaving normal mode
+nnoremap <silent> oo :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+nnoremap <silent> OO :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+
+nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
