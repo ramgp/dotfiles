@@ -20,7 +20,9 @@ alias cgb="git rev-parse --abbrev-ref HEAD"
 
 if (( $+commands[exa] )); then
   alias ll="exa --icons -l --group-directories-first"
-  alias la="ll -a"
+  alias llt="exa --tree --icons -l --group-directories-first"
+  alias la="exa --icons -la --group-directories-first"
+  alias lat="exa --tree --icons -la --group-directories-first"
   alias l="exa --icons -1a --group-directories-first"
   alias lo="la -snew"
 fi
