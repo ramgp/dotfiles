@@ -2,7 +2,8 @@ set incsearch
 set number
 set relativenumber
 set showmode
-set timeoutlen=500
+set timeoutlen=250
+set ttimeoutlen=0
 set clipboard=unnamedplus
 set scrolloff=10
 set highlightedyank
@@ -28,7 +29,7 @@ map <leader>j :action Back<CR>
 map <leader>k :action Forward<CR>
 map <leader>m :action EditorScrollToCenter<CR>
 map <leader>n :action FileChooser.NewFolder<CR>
-map <leader>o :action OverrideMethods<CR>
+" map <leader>o :action OverrideMethods<CR>
 map <leader>p :action GotoFile<CR>
 map <leader>q :action QuickJavaDoc<CR>
 map <leader>r :action RenameElement<CR>
@@ -43,3 +44,7 @@ map <leader>z :action Vcs.RollbackChangedLines<CR>
 map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
 
+" Inserts empty line(s) without leaving normal mode
+nnoremap <silent> <leader>0 :action EditorStartNewLine<CR>
+nnoremap <silent> <leader>oo :action EditorSplitLine<CR>
+nnoremap <silent> <leader>O :action EditorStartNewLineBefore<CR>
