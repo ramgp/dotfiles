@@ -1,11 +1,24 @@
 hi Comment cterm=italic
+
+" OneDark theme config
 let g:onedark_hide_endofbuffer=1
 let g:onedark_terminal_italics=1
 let g:onedark_termcolors=256
+
+" Gruvbox theme config
 let g:gruvbox_italic=1
+let g:gruvbox_invert_selection = 0
+
+" Gruvbox Material theme config
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_enable_italic = 0
+let g:gruvbox_material_enable_italic_comment = 1
+let g:gruvbox_material_cursor = 'aqua'
+let g:gruvbox_material_palette = 'material'
 
 if !exists("g:syntax_on")
-  syntax enable                           " Enables syntax highlighing
+  " Enables syntax highlighing
+  syntax enable
 endif
 
 if !has('gui_running')
@@ -15,11 +28,20 @@ endif
 " always display status line
 set laststatus=2
 
+" checks if your terminal has 24-bit color support
+if (has("termguicolors"))
+  set termguicolors
+  hi LineNr ctermbg=NONE guibg=NONE
+endif
+
 " colorscheme gruvbox
 colorscheme onedark
+" colorscheme gruvbox-material
+
+let current_scheme = get(g:, 'colors_name', 'default')
 
 " onedark.vim override: Don't set a background color when running in a terminal;
-if (has("autocmd") && !has("gui_running"))
+if (current_scheme == "onedark" && has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
@@ -30,15 +52,15 @@ endif
 " let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#formatter = 'unique_tail'
 " let g:airline_theme='onedark'
-
-" checks if your terminal has 24-bit color support
-if (has("termguicolors"))
-    set termguicolors
-    hi LineNr ctermbg=NONE guibg=NONE
+let s:lightline_colorscheme = 'one'
+if (current_scheme == 'gruvbox')
+  let s:lightline_colorscheme = 'gruvbox'
+elseif (current_scheme == 'gruvbox-material')
+  let s:lightline_colorscheme = 'gruvbox_material'
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': s:lightline_colorscheme,
       \ 'mode_map': {
         \ 'n' : 'N',
         \ 'i' : 'I',

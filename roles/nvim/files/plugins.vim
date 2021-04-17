@@ -25,8 +25,10 @@ call plug#begin('~/.local/share/nvim/site/autoload/plugged')
   " Commenting
   Plug 'tpope/vim-commentary'
 
-  " OneDark theme
+  " Color themes
   Plug 'joshdick/onedark.vim'
+  Plug 'gruvbox-community/gruvbox'
+  Plug 'sainnhe/gruvbox-material'
 
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -37,8 +39,9 @@ call plug#begin('~/.local/share/nvim/site/autoload/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
 
-  Plug 'gruvbox-community/gruvbox'
 
   Plug 'tpope/vim-fugitive'
   Plug 'machakann/vim-highlightedyank'
+
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
