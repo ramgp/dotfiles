@@ -4,6 +4,6 @@
     executable: /usr/bin/zsh
 
 - name: Install nodejs tools
-  shell: source "{{xdg_config_home}}/zsh/.zshrc" && npm i -g cloc grunt-cli npmlist nws diff-so-fancy
+  shell: source "{{xdg_config_home}}/zsh/.zshrc" && npm i -g neovim yarn swank cloc grunt-cli npmlist diff-so-fancy
   args:
     executable: /usr/bin/zsh
