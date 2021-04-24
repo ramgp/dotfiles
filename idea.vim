@@ -2,7 +2,7 @@ set incsearch
 set number
 set relativenumber
 set showmode
-set timeoutlen=250
+set timeoutlen=400
 set ttimeoutlen=0
 set clipboard=unnamedplus
 set scrolloff=10
