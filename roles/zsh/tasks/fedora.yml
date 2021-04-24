@@ -3,3 +3,24 @@
   become_user: root
   become: true
   become_method: sudo
+
+- name: Check for .bash_aliases
+  stat: path="{{dotfiles_user_home}}/.bash_aliases"
+  register: aliases
+
+- name: Back up .bash_aliases
+  command: cp "{{dotfiles_user_home}}/.bash_aliases" "{{dotfiles_user_home}}/.bash_aliases.bak"
+  args:
+    creates: "{{dotfiles_user_home}}/.bash_aliases.bak"
+  when: aliases.stat.exists
+
+- name: Remove .bash_aliases
+  command: rm "{{dotfiles_user_home}}/.bash_aliases"
+  when: aliases.stat.exists
+
+- name: Symlink .bash_aliases
+  file:
+    src: "{{ dotfiles_home }}/fedora/.bash_aliases"
+    dest: "{{dotfiles_user_home}}/.bash_aliases"
+    state: link
+
