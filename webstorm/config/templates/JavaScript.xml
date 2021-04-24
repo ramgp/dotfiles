@@ -1,0 +1,85 @@
+<templateSet group="JavaScript">
+  <template name="lol" value="console.log(&quot;$NAME$&quot;, $VALUE$);&#10;$END$" description="" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="jsDefineParameter()" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="jsSuggestVariableName()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="nfn" value="function $NAME$($ARGS$) {&#10;  $END$&#10;}" description="Create named function" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ARGS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="gva" value="v6Utils.getValueAt($NAME$, &quot;$VALUE$&quot;)$END$" description="v6Utils.getValueAt" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="jsDefineParameter()" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="iso" value="v6Utils.isObject($NAME$)$END$" description="v6Utils.isObject" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="jsDefineParameter()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="kopc" value="ko.pureComputed(() =&gt; {&#10;  $END$&#10;})" description="Create KO pure computed" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="koo" value="ko.observable($INIT_VALUE$)$END$" description="Create KO observable" toReformat="true" toShortenFQNames="true">
+    <variable name="INIT_VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="koa" value="ko.observableArray($INIT_VALUE$)$END$" description="Create KO observable array" toReformat="true" toShortenFQNames="true">
+    <variable name="INIT_VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="vu" value="v6Utils.$MEMBER$" description="v6Utils" toReformat="true" toShortenFQNames="true">
+    <variable name="MEMBER" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="vc" value="v6Config.$MEMBER$" description="v6Config" toReformat="true" toShortenFQNames="true">
+    <variable name="MEMBER" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="udefer" value="_.defer(() =&gt; {&#10;  $END$&#10;});" description="Create _.defer boilerplate" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="urdc" value="_.reduce($ARGS$, ($ACC$, $ITEM$) =&gt; {&#10;  $END$&#10;  return $ACC$;&#10;}, $SEED$);" description="Create _.reduce boilerplate" toReformat="true" toShortenFQNames="true">
+    <variable name="ARGS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ACC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ITEM" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SEED" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="afn" value="($ARGS$) =&gt; {&#10;  $END$&#10;}" description="Create arrow function" toReformat="true" toShortenFQNames="true">
+    <variable name="ARGS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name="pdefer" value="Promise.resolve().then(() =&gt; {&#10;  $END$&#10;});" description="Create resolved promise to hack event loop" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
+</templateSet>
