@@ -1,4 +1,4 @@
-if (($+commands[bat])); then
+if (($+commands[bat2])); then
   export MANROFFOPT="-c"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi

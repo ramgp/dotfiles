@@ -4,4 +4,10 @@ export ZDOTDIR=${ZDOTDIR:=${XDG_CONFIG_HOME}/zsh}
 
 export RBENV_ROOT="${XDG_DATA_HOME}/rbenv"
 
+# Get color support for 'less'
+export LESS="--RAW-CONTROL-CHARS"
+
+# Use colors for less, man, etc.
+[ -f ~/.LESS_TERMCAP ] && . ~/.LESS_TERMCAP
+
 source $ZDOTDIR/.zshenv
