@@ -28,7 +28,7 @@ set noshowmode                          " We don't need to see things like -- IN
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
-set timeoutlen=250                      " How long to wait for a second key stroke
+set timeoutlen=350                      " How long to wait for a second key stroke
 set ttimeoutlen=0                       " Execute code sequence without any delay
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
