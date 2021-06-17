@@ -65,14 +65,13 @@ source $HOME/.dotfiles/roles/zsh/config.zsh
 source $HOME/.dotfiles/roles/zsh/env.zsh
 source $HOME/.dotfiles/roles/zsh/path.zsh
 
-if [[ (( $+commands[rbenv] )) ]]; then
+if (($+commands[rbenv])); then
   eval "$(rbenv init -)"
 fi
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
-[ -f ~$HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-
 [ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
