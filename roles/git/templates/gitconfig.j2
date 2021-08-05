@@ -50,6 +50,7 @@
   a = add
   ca = commit -a
   cam = commit -am
+  can = commit -an
   cm = commit -m
   st = status
   s = status
@@ -66,6 +67,8 @@
   lol = log --graph --decorate --oneline
   lola = log --graph --decorate --oneline --all
   br = branch
+  bc = switch -c
+  bs = switch
   dc = diff --cached
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
   lh = rev-parse --short HEAD
@@ -73,7 +76,6 @@
   plr = pull --rebase
   amend = commit --amend
   wip = commit --no-verify -am "WIP"
-  br = branch
   rn = branch -m
   # diff-so-fancy
   # https://github.com/so-fancy/diff-so-fancy/#usage
