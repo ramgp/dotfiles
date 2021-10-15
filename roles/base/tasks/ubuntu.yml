@@ -47,14 +47,14 @@
 
 - name: Install ripgrep .deb package from github
   apt:
-    deb: https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
+    deb: https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
   become: yes
   become_user: root
   become_method: sudo
 
 - name: Install bat .deb package from github
   apt:
-    deb: https://github.com/sharkdp/bat/releases/download/v0.17.1/bat_0.17.1_amd64.deb
+    deb: https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb
   become: yes
   become_user: root
   become_method: sudo
