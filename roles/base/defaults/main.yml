@@ -7,6 +7,7 @@ apt_packages:
   - micro
   - p7zip-full
   - neofetch
+  - vim
 
   # rbenv-build deps
   - autoconf
@@ -29,6 +30,7 @@ dnf_packages:
   - micro
   - bat
   - p7zip-plugins
+  - vim
 
   # rbenv-build deps
   - gcc
