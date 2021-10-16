@@ -28,7 +28,7 @@ dnf_packages:
   - ripgrep
   - micro
   - bat
-  - p7zip
+  - p7zip-plugins
 
   # rbenv-build deps
   - gcc

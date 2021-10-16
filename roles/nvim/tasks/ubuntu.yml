@@ -1,11 +1,3 @@
-- name: Add neovim unstable ppa
-  apt_repository:
-    repo: ppa:neovim-ppa/unstable
-    update_cache: no
-  become: yes
-  become_user: root
-  become_method: sudo
-
 - name: Update apt package info
   apt:
     update_cache: yes
@@ -26,9 +18,20 @@
 - name: Install pynvim
   command: python3 -m pip install --user --upgrade pynvim
 
-- name: Install neovim with apt
-  apt:
-    name: neovim
+- name: Install neovim appImage
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    dest: /opt/nvim.appimage
+    mode: '0755'
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: Create nvim link
+  ansible.builtin.file:
+    src: /opt/nvim.appimage
+    dest: /usr/bin/nvim
+    state: link
   become: yes
   become_user: root
   become_method: sudo

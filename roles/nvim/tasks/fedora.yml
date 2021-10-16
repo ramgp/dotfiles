@@ -1,5 +1,10 @@
-- name: Install vim with dnf
-  dnf: name=neovim state=present
-  become: yes
-  become_user: root
-  become_method: sudo
+- name: Enable Fedora Copr for neovim nightly
+  community.general.copr:
+    name: agriffis/neovim-nightly
+
+- name: Install the latest version of Neovim and deps
+  dnf:
+    name:
+      - neovim
+      - python3-neovim
+    state: latest
