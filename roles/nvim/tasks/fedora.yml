@@ -1,6 +1,9 @@
 - name: Enable Fedora Copr for neovim nightly
   community.general.copr:
     name: agriffis/neovim-nightly
+  become: yes
+  become_user: root
+  become_method: sudo
 
 - name: Install the latest version of Neovim and deps
   dnf:
@@ -8,3 +11,6 @@
       - neovim
       - python3-neovim
     state: latest
+  become: yes
+  become_user: root
+  become_method: sudo
