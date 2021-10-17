@@ -1,4 +1,3 @@
-# Installation
 - include: fedora.yml
   when: ansible_distribution == 'Fedora'
 
@@ -7,17 +6,17 @@
 
 - name: Check for .zshenv
   stat: path="{{dotfiles_user_home}}/.zshenv"
-  register: zshenv_stat
+  register: zshenv
 
 - name: Back up .zshenv
   command: cp "{{dotfiles_user_home}}/.zshenv" "{{dotfiles_user_home}}/.zshenv.bak"
   args:
     creates: "{{dotfiles_user_home}}/.zshenv.bak"
-  when: zshenv_stat.stat.exists
+  when: zshenv.stat.exists
 
 - name: Remove .zshenv
   command: rm "{{dotfiles_user_home}}/.zshenv"
-  when: zshenv_stat.stat.exists
+  when: zshenv.stat.exists
 
 - name: Symlink .zshenv
   file:
@@ -25,68 +24,29 @@
     dest: "{{dotfiles_user_home}}/.zshenv"
     state: link
 
-- name: Check for prezto installation
-  stat: "path={{xdg_config_home}}/zsh/.zprezto"
-  register: zprezto_stat
+- name: Check for zinit installation
+  stat: "path={{xdg_config_home}}/zsh/.zinit"
+  register: zinit
 
-- name: Clone prezto repository
+- name: Clone zinit repository
   git:
-    repo: https://github.com/sorin-ionescu/prezto.git
-    dest: "{{xdg_config_home}}/zsh/.zprezto"
-  when: not zprezto_stat.stat.exists
-
-#- name: Config extended glob
-#  shell: setopt EXTENDED_GLOB
-#  args:
-#    executable: /usr/bin/zsh
-
-# - name: Install prezto
-#   shell: >
-#     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-#     done
-#   args:
-#     executable: /usr/bin/zsh
-
-- name: Symlink prezto runcoms to ZDOTDIR
-  file:
-    src: "{{ xdg_config_home }}/zsh/.zprezto/runcoms/{{item}}"
-    dest: "{{xdg_config_home}}/zsh/.{{item}}"
-    state: link
-    force: yes
-  with_items:
-    - zlogin
-    - zlogout
-    - zprofile
-    - zshenv
+    repo: https://github.com/zdharma/zinit.git
+    dest: "{{xdg_config_home}}/zsh/.zinit"
+  when: not zinit.stat.exists
 
 - name: Check for .zshrc
   stat: path="{{xdg_config_home}}/zsh/.zshrc"
-  register: zshrc_stat
+  register: zshrc
 
 - name: Back up .zshrc
   command: cp "{{xdg_config_home}}/zsh/.zshrc" "{{xdg_config_home}}/zsh/.zshrc.bak"
   args:
     creates: "{{xdg_config_home}}/zsh/.zshrc.bak"
-  when: zshrc_stat.stat.exists
+  when: zshrc.stat.exists
 
 - name: Remove .zshrc
   command: rm "{{xdg_config_home}}/zsh/.zshrc"
-  when: zshrc_stat.stat.exists
-
-- name: Check for zpreztorc
-  stat: path="{{xdg_config_home}}/zsh/.zpreztorc"
-  register: zpreztorc_stat
-
-- name: Back up zpreztorc
-  command: cp "{{xdg_config_home}}/zsh/.zpreztorc" "{{xdg_config_home}}/zsh/.zpreztorc.bak"
-  args:
-    creates: "{{xdg_config_home}}/zsh/.zpreztorc.bak"
-  when: zpreztorc_stat.stat.exists
-
-- name: Remove zpreztorc
-  command: rm "{{xdg_config_home}}/zsh/.zpreztorc"
-  when: zpreztorc_stat.stat.exists
+  when: zshrc.stat.exists
 
 - name: Symlink all zsh config files
   file:
@@ -95,5 +55,4 @@
     state: link
   with_items:
     - "zshrc"
-    - "zpreztorc"
     - "p10k.zsh"
