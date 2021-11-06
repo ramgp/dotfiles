@@ -19,7 +19,8 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-zinit load zdharma/history-search-multi-word
+# zinit load zdharma/history-search-multi-word
+zinit load zsh-users/zsh-history-substring-search
 zinit load skywind3000/z.lua
 
 zinit light zsh-users/zsh-autosuggestions
