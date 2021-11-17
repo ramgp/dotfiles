@@ -30,7 +30,7 @@
 
 - name: Clone zinit repository
   git:
-    repo: https://github.com/zdharma/zinit.git
+    repo: https://github.com/z-shell/zinit.git
     dest: "{{xdg_config_home}}/zsh/.zinit/bin"
   when: not zinit.stat.exists
 
