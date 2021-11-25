@@ -45,7 +45,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # Cycle through history based on characters already typed on the line
 bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forwards
+bindkey "^[[B" history-beginning-search-forward
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
