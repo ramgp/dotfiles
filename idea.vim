@@ -48,3 +48,4 @@ map <leader>] :action EditorCodeBlockEnd<CR>
 nnoremap <silent> <leader>0 :action EditorStartNewLine<CR>
 nnoremap <silent> <leader>oo :action EditorSplitLine<CR>
 nnoremap <silent> <leader>O :action EditorStartNewLineBefore<CR>
+set clipboard+=ideaput
