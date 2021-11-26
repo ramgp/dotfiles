@@ -25,3 +25,9 @@ if (( $+commands[exa] )); then
   alias l="exa --icons -1a --group-directories-first"
   alias lo="la -snew"
 fi
+
+if (( $+commands[docker-compose] )); then
+  alias dk=docker-compose
+  alias dku="docker-compose up -d"
+  alias dkd="docker-compose down"
+fi
