@@ -26,6 +26,7 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light z-shell/fast-syntax-highlighting
+zinit light trystan2k/zsh-tab-title
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -67,3 +68,6 @@ fi
 [ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+export N_PREFIX=$HOME/.local/n
+PATH=$N_PREFIX/bin:$PATH

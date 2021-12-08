@@ -11,11 +11,15 @@ alias timezsh="time zsh -i -c echo"
 alias tmux='TERM=xterm-256color tmux -f "$XDG_CONFIG_HOME"/tmux/.tmux.conf'
 alias tmx='TERM=xterm-256color /usr/bin/tmux -f "$HOME"/.dotfiles/.tmux.conf'
 alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh nosplash"
+alias myip='curl ifconfig.co'
+
+# git
 alias gl="git pull --rebase"
 alias gf="git fetch origin"
-alias myip='curl ifconfig.co'
 alias lgcm="git rev-parse --short HEAD"
 alias cgb="git rev-parse --abbrev-ref HEAD"
+alias gud="git switch develop && git pull -r"
+alias gsb="git switch"
 
 if (( $+commands[exa] )); then
   alias ll="exa --icons -l --group-directories-first"
