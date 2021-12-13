@@ -33,7 +33,8 @@ call plug#begin('~/.local/share/nvim/site/autoload/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
 
-  Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+  " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
