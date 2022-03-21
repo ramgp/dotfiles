@@ -12,10 +12,10 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    z-shell/z-a-rust \
-    z-shell/z-a-as-monitor \
-    z-shell/z-a-patch-dl \
-    z-shell/z-a-bin-gem-node
+    zdharma-continuum/z-a-rust \
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
@@ -25,7 +25,7 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
 
 zinit light zsh-users/zsh-autosuggestions
-zinit light z-shell/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light trystan2k/zsh-tab-title
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
@@ -71,3 +71,21 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 export N_PREFIX=$HOME/.local/n
 PATH=$N_PREFIX/bin:$PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+# PATH="$PYENV_ROOT/bin:$PATH"
+PATH="$PATH:$PYENV_ROOT/bin"
+
+if (($+commands[pyenv])); then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+fi
+
+pyenv-brew-relink() {
+    rm -f "$HOME/.pyenv/versions/*-brew"
+    for i in $(brew --cellar)/python* ; do
+        ln -s -f "$p" "$HOME/.pyenv/versions/${i##/*/}-brew"
+    done
+    pyenv rehash
+}
+
