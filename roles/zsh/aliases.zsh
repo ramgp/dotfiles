@@ -18,7 +18,8 @@ alias gl="git pull --rebase"
 alias gf="git fetch origin"
 alias lgcm="git rev-parse --short HEAD"
 alias cgb="git rev-parse --abbrev-ref HEAD"
-alias gud="git switch develop && git pull -r"
+alias gsud="git switch develop && git pull -r"
+alias gud="git update-ref refs/heads/develop origin/develop"
 alias gsb="git switch"
 
 if (( $+commands[exa] )); then
