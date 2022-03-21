@@ -53,6 +53,7 @@ nnoremap <C-l> <C-w>l
 
 " Delete to black hole register
 nnoremap <leader>y "_dd
+vnoremap <leader>y "_dd
 
 " Editor tabs
 nnoremap <leader>n :tabnew<Space>
