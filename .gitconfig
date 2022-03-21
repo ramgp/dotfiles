@@ -1,13 +1,22 @@
+[hub]
+  protocol = https
 [user]
   name = Ramon Garcia-Perez
   email = ramgarcia@outlook.com
+[github]
+  user = ramgp
+[url "https://bitbucket.org/"]
+  insteadOf = bb:
+[url "https://github.com/"]
+  insteadOf = gh:
+[url "https://gist.github.com/"]
+  insteadOf = gist:
 [push]
   default = current
   followTags = true
 [core]
   trustctime = false
   autocrlf = input
-  editor = "subl -n -w"
   filemode = false
   excludesfile = ~/.gitignore_global
 [color]
@@ -16,17 +25,17 @@
   diff = auto
   status = auto
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 [color "diff"]
-	meta = 11
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+  meta = 11
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 [merge]
   tool = vimdiff
 [mergetool]
@@ -41,6 +50,7 @@
   a = add
   ca = commit -a
   cam = commit -am
+  can = commit -an
   cm = commit -m
   st = status
   s = status
@@ -50,6 +60,8 @@
   pu = push -u
   dft = difftool
   mgt = mergetool
+  ma = merge --abort
+  mc = merge --continue
   cp = cherry-pick
   cl = clone
   sst = status -sb
@@ -57,6 +69,8 @@
   lol = log --graph --decorate --oneline
   lola = log --graph --decorate --oneline --all
   br = branch
+  bc = switch -c
+  bs = switch
   dc = diff --cached
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
   lh = rev-parse --short HEAD
@@ -64,7 +78,6 @@
   plr = pull --rebase
   amend = commit --amend
   wip = commit --no-verify -am "WIP"
-  br = branch
   rn = branch -m
   # diff-so-fancy
   # https://github.com/so-fancy/diff-so-fancy/#usage
@@ -92,3 +105,4 @@
   remote-branches = "!f() { git ls-remote --heads ${1:origin} | sed 's?.*refs/heads/??'; }; f "
 
   lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+  wa = worktree add
