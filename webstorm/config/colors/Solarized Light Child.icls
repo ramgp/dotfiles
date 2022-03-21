@@ -3,7 +3,7 @@
     <property name="created">2016-11-01T23:59:18</property>
     <property name="ide">WebStorm</property>
     <property name="ideVersion">2016.2.4.0.0</property>
-    <property name="modified">2020-01-15T11:09:55</property>
+    <property name="modified">2022-03-21T00:26:09</property>
     <property name="originalScheme">Solarized Light Original</property>
   </metaInfo>
   <colors>
@@ -14,6 +14,7 @@
     <option name="CARET_ROW_COLOR" value="eee8d5" />
     <option name="CONSOLE_BACKGROUND_KEY" value="fdf6e3" />
     <option name="DELETED_LINES_COLOR" value="dc322f" />
+    <option name="FOLDED_TEXT_BORDER_COLOR" value="cccccc" />
     <option name="GUTTER_BACKGROUND" value="eee8d5" />
     <option name="INDENT_GUIDE" value="eee8d5" />
     <option name="LINE_NUMBERS_COLOR" value="93a1a1" />
@@ -165,10 +166,27 @@
         <option name="FOREGROUND" value="cb4b16" />
       </value>
     </option>
+    <option name="BREADCRUMBS_CURRENT">
+      <value>
+        <option name="FOREGROUND" value="586e75" />
+        <option name="BACKGROUND" value="d6d6d6" />
+        <option name="FONT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="BREADCRUMBS_DEFAULT">
+      <value>
+        <option name="FOREGROUND" value="586e75" />
+      </value>
+    </option>
     <option name="BREADCRUMBS_HOVERED">
       <value>
-        <option name="FOREGROUND" value="585858" />
+        <option name="FOREGROUND" value="586e75" />
         <option name="BACKGROUND" value="ccccff" />
+      </value>
+    </option>
+    <option name="BREADCRUMBS_INACTIVE">
+      <value>
+        <option name="FOREGROUND" value="586e75" />
       </value>
     </option>
     <option name="BREAKPOINT_ATTRIBUTES">
@@ -790,6 +808,7 @@
     <option name="DEFAULT_KEYWORD">
       <value>
         <option name="FOREGROUND" value="6c71c4" />
+        <option name="FONT_TYPE" value="3" />
       </value>
     </option>
     <option name="DEFAULT_LINE_COMMENT">
@@ -810,7 +829,7 @@
     </option>
     <option name="DEFAULT_NUMBER">
       <value>
-        <option name="FOREGROUND" value="cb4b16" />
+        <option name="FOREGROUND" value="2aa198" />
       </value>
     </option>
     <option name="DEFAULT_PARAMETER">
@@ -858,7 +877,7 @@
     <option name="DELETED_TEXT_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="839496" />
-        <option name="BACKGROUND" value="eee8d5" />
+        <option name="BACKGROUND" value="f3eee1" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -1223,7 +1242,7 @@
     </option>
     <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="ccccff" />
+        <option name="BACKGROUND" value="e7e2d4" />
         <option name="ERROR_STRIPE_COLOR" value="96ccff" />
       </value>
     </option>
@@ -2650,7 +2669,7 @@
     </option>
     <option name="SEARCH_RESULT_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="ccccff" />
+        <option name="BACKGROUND" value="e7e2d4" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -3073,7 +3092,7 @@
     </option>
     <option name="TEXT_SEARCH_RESULT_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="93a1a1" />
+        <option name="BACKGROUND" value="e7e2d4" />
         <option name="ERROR_STRIPE_COLOR" value="ff00" />
       </value>
     </option>
@@ -3205,13 +3224,16 @@
     </option>
     <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="ffcce5" />
+        <option name="BACKGROUND" value="e7e2d4" />
+        <option name="FONT_TYPE" value="1" />
         <option name="ERROR_STRIPE_COLOR" value="ff82ce" />
+        <option name="EFFECT_TYPE" value="4" />
       </value>
     </option>
     <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="ffcce5" />
+        <option name="BACKGROUND" value="e7e2d4" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="WRONG_REFERENCES_ATTRIBUTES">
