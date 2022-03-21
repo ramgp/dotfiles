@@ -39,7 +39,7 @@ map <leader>u :action GotoSuperMethod<CR>
 map <leader>v :action $Paste<CR>
 map <leader>w :action EditorSelectWord<CR>
 map <leader>x :action $Cut<CR>
-map <leader>y :action EditorDeleteLine<CR>
+map <leader>y :action EditorDeleteLine<CR> <Esc>
 map <leader>z :action Vcs.RollbackChangedLines<CR>
 map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>

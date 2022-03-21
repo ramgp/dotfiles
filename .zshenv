@@ -21,3 +21,4 @@ export LESS="--RAW-CONTROL-CHARS"
 [ -f ~/.LESS_TERMCAP ] && . ~/.LESS_TERMCAP
 
 [ -f $ZDOTDIR/.zshenv ] && . $ZDOTDIR/.zshenv
+
