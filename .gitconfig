@@ -72,6 +72,8 @@
   bc = switch -c
   bs = switch
   dc = diff --cached
+  h = stash
+  hp = stash pop
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
   lh = rev-parse --short HEAD
   noff = merge --no-ff
@@ -106,3 +108,6 @@
 
   lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
   wa = worktree add
+
+  # Abort all local changes that have been made (but not yet committed)
+  clr  = "!f() { git reset --hard && git clean -f -d; }; f"
