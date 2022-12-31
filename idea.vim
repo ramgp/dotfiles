@@ -2,7 +2,7 @@ set incsearch
 set number
 set relativenumber
 set showmode
-set timeoutlen=400
+set timeoutlen=300
 set ttimeoutlen=0
 set clipboard=unnamedplus
 set scrolloff=10
@@ -29,15 +29,16 @@ map <leader>j :action Back<CR>
 map <leader>k :action Forward<CR>
 map <leader>m :action EditorScrollToCenter<CR>
 map <leader>n :action FileChooser.NewFolder<CR>
-" map <leader>o :action OverrideMethods<CR>
+map <leader>o :action ShowIntentionActions<CR>
 map <leader>p :action GotoFile<CR>
 map <leader>q :action QuickJavaDoc<CR>
 map <leader>r :action RenameElement<CR>
 map <leader>s :action SaveAll<CR>
 map <leader>t :action Vcs.UpdateProject<CR>
-map <leader>u :action GotoSuperMethod<CR>
+map <leader>u df(f,cf".<Esc>f"df)
+" map <leader>u :s/\(.*\)\(=\|:\)\sv6Utils.getValueAt(\(.*\),\s"\(.*\)"\s)/\1\2\3.\4<CR>
 map <leader>v :action $Paste<CR>
-map <leader>w :action EditorSelectWord<CR>
+map <leader>w ciw
 map <leader>x :action $Cut<CR>
 map <leader>y :action EditorDeleteLine<CR> <Esc>
 map <leader>z :action Vcs.RollbackChangedLines<CR>
@@ -46,6 +47,6 @@ map <leader>] :action EditorCodeBlockEnd<CR>
 
 " Inserts empty line(s) without leaving normal mode
 nnoremap <silent> <leader>0 :action EditorStartNewLine<CR>
-nnoremap <silent> <leader>oo :action EditorSplitLine<CR>
+" nnoremap <silent> <leader>oo :action EditorSplitLine<CR>
 nnoremap <silent> <leader>O :action EditorStartNewLineBefore<CR>
 set clipboard+=ideaput
