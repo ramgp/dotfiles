@@ -18,6 +18,7 @@ lvim.plugins = {
     -- },
     {
         "kylechui/nvim-surround",
+        event = "VeryLazy",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function()
             require("nvim-surround").setup({
@@ -27,6 +28,7 @@ lvim.plugins = {
     },
     {
         "FotiadisM/tabset.nvim",
+        event = "VeryLazy",
         config = function()
             require("tabset").setup(
                 {
