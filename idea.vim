@@ -44,6 +44,7 @@ map <leader>y :action EditorDeleteLine<CR> <Esc>
 map <leader>z :action Vcs.RollbackChangedLines<CR>
 map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
+map <leader>/ :action CommentByLineComment<CR>
 
 " Inserts empty line(s) without leaving normal mode
 nnoremap <silent> <leader>0 :action EditorStartNewLine<CR>
