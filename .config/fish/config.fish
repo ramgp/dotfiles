@@ -40,8 +40,8 @@ if status --is-interactive
   set theme $XDG_CONFIG_HOME/fish/themes/kanagawa.fish
   test -r $theme; and source $theme
 
-  bind \$ end-of-line
-  bind ^ beginning-of-line
+  bind -M default \$ end-of-line
+  bind -M default ^ beginning-of-line
   bind -M insert \ce end-of-line
   bind -M insert \ca beginning-of-line
   bind -M insert \e\[A history-prefix-search-backward
