@@ -6,8 +6,8 @@ alias -s pkill="pkill -9 -f "
 alias -s lj='jobs'
 
 alias -s tmux="TERM=xterm-256color tmux -f $XDG_CONFIG_HOME/tmux/.tmux.conf"
-alias -s tmx="TERM=xterm-256color /usr/bin/tmux -f $HOME/.dotendles/.tmux.conf"
-alias -s myip='curl ifconendg.co'
+alias -s tmx="TERM=xterm-256color /usr/bin/tmux -f $HOME/.dotfiles/.tmux.conf"
+alias -s myip='curl ifconfig.co'
 
 alias -s 0ad="$HOME/prg/code/0ad/binaries/system/pyrogenesis"
 
