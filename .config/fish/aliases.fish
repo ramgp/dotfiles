@@ -1,15 +1,14 @@
-# alias -s -="cd -"
 alias -s zz='z -'
 alias -s md='mkdir -p'
 alias -s pg='ps -ef | rg'
 alias -s pkill="pkill -9 -f "
 alias -s lj='jobs'
 
-alias -s tmux="TERM=xterm-256color tmux -f $XDG_CONFIG_HOME/tmux/.tmux.conf"
-alias -s tmx="TERM=xterm-256color /usr/bin/tmux -f $HOME/.dotfiles/.tmux.conf"
+alias -s tmux="TERM=xterm-256color command tmux -f $XDG_CONFIG_HOME/tmux/.tmux.conf"
+alias -s tmx="TERM=xterm-256color command tmux -f $HOME/.dotfiles/.tmux.conf"
 alias -s myip='curl ifconfig.co'
 
-alias -s 0ad="$HOME/prg/code/0ad/binaries/system/pyrogenesis"
+alias -s 0ad="$HOME/prg/0ad/binaries/system/pyrogenesis"
 
 # git
 alias -s g=git
@@ -44,10 +43,6 @@ if type -t podman
   alias -s pmd="podman machine stop"
   alias -s pmu="podman machine start"
 end
-
-# function td() {
-#   mkdir -p $@ && cd ${@:$#}
-# }
 
 alias -s serve='python3 -m http.server'
 alias -s jj='pbpaste | jsonpp | pbcopy'
