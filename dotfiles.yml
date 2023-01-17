@@ -16,9 +16,9 @@
     - role: fzf
       tags:
         - fzf
-    - role: nvim
-      tags:
-        - nvim
+    # - role: nvim
+    #   tags:
+    #     - nvim
     - role: lvim
       tags:
         - lvim
