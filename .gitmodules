@@ -1,0 +1,3 @@
+[submodule "roles/user-astro-nvim"]
+	path = roles/user-astro-nvim
+	url = git@github.com:ramgp/user-astro-nvim.git

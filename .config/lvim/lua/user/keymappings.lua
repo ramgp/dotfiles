@@ -19,4 +19,3 @@ lvim.keys.visual_mode["<leader>v"] = "\"_dP"
 lvim.keys.normal_mode["<leader>y"] = "\"_dd"
 lvim.keys.visual_block_mode["<leader>y"] = "\"_d"
 lvim.keys.normal_mode["<leader>r"] = vim.lsp.buf.rename
-
