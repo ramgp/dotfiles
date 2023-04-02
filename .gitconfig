@@ -15,10 +15,12 @@
   default = current
   followTags = true
 [core]
+  pager = delta
   trustctime = false
   autocrlf = input
   filemode = false
   excludesfile = ~/.gitignore_global
+	abbrev = 8
 [color]
   ui = true
   branch = auto
@@ -45,10 +47,22 @@
   trustExitCode = false
 [difftool]
   prompt = false
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  diff-so-fancy = true
+  features = Catppuccin-mocha
+  line-numbers = true
+  navigate = true    # use n and N to move between diff sections
+  light = false
+  line-numbers-minus-style = red
+  line-numbers-plus-style = green
+  line-numbers-zero-style = black
+[diff]
+  colorMoved = default
 [alias]
   last = log -1 --stat
   a = add
-  ca = commit -a
   cam = commit -am
   can = commit -an
   cm = commit -m
@@ -56,7 +70,6 @@
   s = status
   c = checkout
   co = checkout
-  cob = checkout -b
   pu = push -u
   dft = difftool
   mgt = mergetool
@@ -64,15 +77,14 @@
   mc = merge --continue
   cp = cherry-pick
   cl = clone
-  sst = status -sb
-  lg2 = log -p
+  ld = log -p
   lol = log --graph --decorate --oneline
   lola = log --graph --decorate --oneline --all
   br = branch
   bc = switch -c
   bs = switch
-  dc = diff --cached
-  h = stash
+  df = diff
+  ds = diff --staged
   hp = stash pop
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
   lh = rev-parse --short HEAD
@@ -81,17 +93,9 @@
   amend = commit --amend
   wip = commit --no-verify -am "WIP"
   rn = branch -m
-  # diff-so-fancy
-  # https://github.com/so-fancy/diff-so-fancy/#usage
-  df = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
-  dfs = df --staged
+
   # Get changes for a single commit
   dfc = "!dfc() { git df $1^ $1; }; dfc"
-
-  please = push --force-with-lease
-  publish = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
-  # publish current branch
-  publish = "!f() { git push -u ${1:-origin} $(git rev-parse --abbrev-ref HEAD); }; f"
 
   # http://gggritso.com/human-git-aliases
   unstage = reset -q HEAD --
