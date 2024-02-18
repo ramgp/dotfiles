@@ -115,3 +115,6 @@
 
   # Abort all local changes that have been made (but not yet committed)
   clr  = "!f() { git reset --hard && git clean -f -d; }; f"
+
+  # https://www.reddit.com/r/git/comments/ulpmd0/gitignore_template_generator/
+  ignore = '!gi() { IFS=","; curl -L -s "https://www.toptal.com/developers/gitignore/api/$*" | tee .gitignore;}; gi'
