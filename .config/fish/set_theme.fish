@@ -2,28 +2,32 @@ function set_theme
     set -l cfg $HOME/.config
     set -l kitty_theme_overrides $cfg/kitty/theme.conf
     set -l kitty_theme $cfg/kitty/themes/catppuccin/mocha.conf
-    
+
     if is_system_appearence_dark
-      sd 'latte' 'mocha' $cfg/bat/config
-      
-      ln -sf $cfg/kitty/themes/catppuccin_dark.conf $kitty_theme_overrides
+        sd latte mocha $cfg/bat/config
 
-      change_theme "Catppuccin Mocha"
+        ln -sf $cfg/kitty/themes/catppuccin_dark.conf $kitty_theme_overrides
+
+        # change_theme "Catppuccin Mocha"
+        fish_config theme save "Catppuccin Mocha"
     else
-      sd 'mocha' 'latte' $cfg/bat/config
-      
-      set kitty_theme $cfg/kitty/themes/catppuccin/latte.conf
-      ln -sf $cfg/kitty/themes/catppuccin_light.conf $kitty_theme_overrides
+        sd mocha latte $cfg/bat/config
 
-      change_theme "Catppuccin Latte"
+        set kitty_theme $cfg/kitty/themes/catppuccin/latte.conf
+        ln -sf $cfg/kitty/themes/catppuccin_light.conf $kitty_theme_overrides
+
+        # change_theme "Catppuccin Latte"
+        fish_config theme save "Catppuccin Latte"
     end
 
-    kitty @ --password="fish_shell" set-colors -ac $kitty_theme
-    kitty @ --password="fish_shell" set-colors -ac $kitty_theme_overrides
+    if set -q KITTY_WINDOW_ID
+        kitty @ --password="fish_shell" set-colors -ac $kitty_theme
+        kitty @ --password="fish_shell" set-colors -ac $kitty_theme_overrides
+    end
 end
 
 function is_system_appearence_dark
-    test "Dark" = (defaults read -g AppleInterfaceStyle 2>/dev/null) 2>/dev/null
+    test Dark = (defaults read -g AppleInterfaceStyle 2>/dev/null) 2>/dev/null
 end
 
 # Extracted from the native fish_config function
@@ -57,7 +61,7 @@ function change_theme --d "Sets current prompt theme"
     end
 
     # Variables a theme is allowed to set
-    set -l theme_var_filter '^fish_(?:pager_)?color.*$';
+    set -l theme_var_filter '^fish_(?:pager_)?color.*$'
 
     while read -lat toks
         # The whitelist allows only color variables.
@@ -71,7 +75,7 @@ function change_theme --d "Sets current prompt theme"
         if test x"$scope" = x-U; and set -qg $toks[1]
             set -eg $toks[1]
         end
-        
+
         set $scope $toks
         set -a have_colors $toks[1]
     end <$file
