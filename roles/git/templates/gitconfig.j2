@@ -1,3 +1,5 @@
+[init]
+  defaultBranch = main
 [hub]
   protocol = https
 [user]
@@ -61,8 +63,11 @@
   line-numbers-zero-style = black
 [diff]
   colorMoved = default
+  algorithm = histogram
 [includeIf "gitdir:~/prg/r1/"]
   path = "~/prg/r1/.gitconfig"
+[branch]
+  sort = -committerdate
 [alias]
   last = log -1 --stat
   a = add
