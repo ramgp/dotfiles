@@ -2,13 +2,13 @@ set incsearch
 set number
 set relativenumber
 set showmode
-set timeoutlen=300
+set timeoutlen=400
 set ttimeoutlen=0
 set clipboard=unnamedplus
 set scrolloff=10
 set highlightedyank
 set surround
-set commentary
+" set commentary
 
 imap jj <Esc>
 imap jk <Esc>
@@ -34,12 +34,12 @@ map <leader>p :action GotoFile<CR>
 map <leader>q :action QuickJavaDoc<CR>
 map <leader>r :action RenameElement<CR>
 map <leader>s :action SaveAll<CR>
-map <leader>t :action Vcs.UpdateProject<CR>
+map <leader>t :action FindInPath<CR>
 map <leader>u df(f,cf".<Esc>f"df)
 " map <leader>u :s/\(.*\)\(=\|:\)\sv6Utils.getValueAt(\(.*\),\s"\(.*\)"\s)/\1\2\3.\4<CR>
 map <leader>v :action $Paste<CR>
 map <leader>w ciw
-map <leader>x :action $Cut<CR>
+map <leader>x :action EditorDeleteLine<CR> <Esc>
 map <leader>y :action EditorDeleteLine<CR> <Esc>
 map <leader>z :action Vcs.RollbackChangedLines<CR>
 map <leader>[ :action EditorCodeBlockStart<CR>

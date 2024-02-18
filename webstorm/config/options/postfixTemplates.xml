@@ -1,36 +1,56 @@
 <application>
   <component name="PostfixTemplates">
-    <template id="isa@userDefined" key=".isa" provider="builtin.js" language-level="ES5" topmost="false">
+    <template id="ea@userDefined" key=".ea" provider="builtin.js" language-level="ES5" topmost="false">
       <conditions />
-      <template name="fakeKey" value="if(_.isArray($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
+      <template name="fakeKey" value="v6Utils.ensureArray($EXPR$)$END$" description="" toReformat="true" toShortenFQNames="true" />
     </template>
-    <template id="lqt@userDefined" key=".lqt" provider="builtin.js" language-level="ES6" topmost="false">
+    <template id="ifko@userDefined" key=".ifko" provider="builtin.js" language-level="ES5" topmost="false">
       <conditions />
-      <template name="fakeKey" value="console.log(&quot;$EXPR$&quot;);" description="" toReformat="true" toShortenFQNames="true" />
-    </template>
-    <template id="ifs@userDefined" key=".ifs" provider="builtin.js" language-level="ES6" topmost="false">
-      <conditions />
-      <template name="fakeKey" value="if(v6Utils.isStringWithContent($EXPR$)){&#10;  $END$&#10;}" toReformat="true" toShortenFQNames="true" />
+      <template name="fakeKey" value="if(ko.isObservable($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
     </template>
     <template id="ise@userDefined" key=".ise" provider="builtin.js" language-level="ES5" topmost="false">
       <conditions />
       <template name="fakeKey" value="if(_.isEmpty($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
     </template>
-    <template id="lg@userDefined" key=".lg" provider="builtin.js" language-level="ES5" topmost="false">
-      <conditions />
-      <template name="fakeKey" value="console.log(&quot;$EXPR$&quot;, $EXPR$);" description="" toReformat="true" toShortenFQNames="true" />
-    </template>
-    <template id="try@userDefined" key=".try" provider="builtin.js" language-level="ES5" topmost="false">
-      <conditions />
-      <template name="fakeKey" value="try {&#10;  $EXPR$;&#10;}&#10;catch (e) {&#10;  console.error(e);&#10;}" description="" toReformat="true" toShortenFQNames="true" />
-    </template>
     <template id="iss@userDefined" key=".iss" provider="builtin.js" language-level="ES6" topmost="false">
       <conditions />
-      <template name="fakeKey" value="v6Utils.isStringWithContent($EXPR$)" toReformat="true" toShortenFQNames="true" />
+      <template name="fakeKey" value="v6Utils.isStringWithContent($EXPR$)" description="" toReformat="true" toShortenFQNames="true" />
     </template>
     <template id="iffn@userDefined" key=".iffn" provider="builtin.js" language-level="ES5" topmost="false">
       <conditions />
       <template name="fakeKey" value="if(_.isFunction($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
+    </template>
+    <template id="try@userDefined" key=".tc" provider="builtin.js" language-level="ES5" topmost="true">
+      <conditions />
+      <template name="fakeKey" value="try {&#10;  $EXPR$;&#10;}&#10;catch (e) {&#10;  console.error(e);&#10;}" description="" toReformat="true" toShortenFQNames="true" />
+    </template>
+    <template id="lg@userDefined" key=".lg" provider="builtin.js" language-level="ES5" topmost="false">
+      <conditions />
+      <template name="fakeKey" value="console.log(&quot;$EXPR$&quot;, $EXPR$);" description="" toReformat="true" toShortenFQNames="true" />
+    </template>
+    <template id="cl@userDefined" key=".cl" provider="builtin.js" language-level="ES5" topmost="true">
+      <conditions />
+      <template name="fakeKey" value="console.log({$EXPR$});" description="" toReformat="true" toShortenFQNames="true" />
+    </template>
+    <template id="ce@userDefined" key=".ce" provider="builtin.js" language-level="ES6" topmost="true">
+      <conditions />
+      <template name="fakeKey" value="console.error({$EXPR$});" description="" toReformat="true" toShortenFQNames="true" />
+    </template>
+    <template id="ifo@userDefined" key=".ifo" provider="builtin.js" language-level="ES5" topmost="false">
+      <conditions />
+      <template name="fakeKey" value="if(v6Utils.isObject($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
+    </template>
+    <template id="es@userDefined" key=".es" provider="builtin.js" language-level="ES6" topmost="false">
+      <conditions />
+      <template name="fakeKey" value="v6Utils.ensureString($EXPR$)" toReformat="true" toShortenFQNames="true" />
+    </template>
+    <template id="isko@userDefined" key=".isko" provider="builtin.js" language-level="ES5" topmost="false">
+      <conditions />
+      <template name="fakeKey" value="ko.isObservable($EXPR$)$END$" description="" toReformat="true" toShortenFQNames="true" />
+    </template>
+    <template id="ifs@userDefined" key=".ifs" provider="builtin.js" language-level="ES6" topmost="false">
+      <conditions />
+      <template name="fakeKey" value="if(v6Utils.isStringWithContent($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
     </template>
     <template id="iso@userDefined" key=".iso" provider="builtin.js" language-level="ES5" topmost="false">
       <conditions />
@@ -40,21 +60,9 @@
       <conditions />
       <template name="fakeKey" value="console.error($EXPR$);" description="" toReformat="true" toShortenFQNames="true" />
     </template>
-    <template id="ea@userDefined" key=".ea" provider="builtin.js" language-level="ES5" topmost="false">
+    <template id="isa@userDefined" key=".isa" provider="builtin.js" language-level="ES5" topmost="false">
       <conditions />
-      <template name="fakeKey" value="v6Utils.ensureArray($EXPR$)$END$" description="" toReformat="true" toShortenFQNames="true" />
-    </template>
-    <template id="ifko@userDefined" key=".ifko" provider="builtin.js" language-level="ES5" topmost="false">
-      <conditions />
-      <template name="fakeKey" value="if(ko.isObservable($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
-    </template>
-    <template id="isko@userDefined" key=".isko" provider="builtin.js" language-level="ES5" topmost="false">
-      <conditions />
-      <template name="fakeKey" value="ko.isObservable($EXPR$)$END$" description="" toReformat="true" toShortenFQNames="true" />
-    </template>
-    <template id="ifo@userDefined" key=".ifo" provider="builtin.js" language-level="ES5" topmost="false">
-      <conditions />
-      <template name="fakeKey" value="if(v6Utils.isObject($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
+      <template name="fakeKey" value="if(_.isArray($EXPR$)){&#10;  $END$&#10;}" description="" toReformat="true" toShortenFQNames="true" />
     </template>
   </component>
 </application>
