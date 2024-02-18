@@ -5,11 +5,12 @@ abbr -a pkill "pkill -9 -f "
 abbr -a lj jobs
 abbr -a - cd -
 abbr -a v nvim
+abbr -a rd rm -rf
 
 abbr -a tmux "TERM=xterm-256color command tmux"
 abbr -a myip 'curl ifconfig.co'
 
-abbr -a 0ad "$HOME/prg/0ad/binaries/system/pyrogenesis"
+alias -s 0ad "$HOME/prg/0ad/binaries/system/pyrogenesis"
 
 # git
 abbr -a g git

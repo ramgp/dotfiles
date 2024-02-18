@@ -28,9 +28,9 @@ if status --is-interactive
     source $HOME/.dotfiles/.config/fish/functions/fish_title.fish
 
     if not functions -q nv
-      alias -s nv 'NVIM_APPNAME=launch_nvim nvim' 2>/dev/null
+        alias -s nv 'NVIM_APPNAME=launch_nvim nvim' 2>/dev/null
     end
-    
+
     set -g fish_user_abbreviations
 
     set aliases $HOME/.dotfiles/.config/fish/aliases.fish
