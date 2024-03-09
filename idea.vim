@@ -25,8 +25,9 @@ map <leader>f :action Find<CR>
 map <leader>g :action GotoLine<CR>
 map <leader>h :action Replace<CR>
 map <leader>i :action ImplementMethods<CR>
-map <leader>j :action Back<CR>
-map <leader>k :action Forward<CR>
+map <leader>j <C-d>
+" map <leader>j :action AceAction<CR>
+map <leader>k <C-u>
 map <leader>m :action EditorScrollToCenter<CR>
 map <leader>n :action FileChooser.NewFolder<CR>
 map <leader>o :action ShowIntentionActions<CR>
@@ -45,6 +46,8 @@ map <leader>z :action Vcs.RollbackChangedLines<CR>
 map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
 map <leader>/ :action CommentByLineComment<CR>
+
+nnoremap <silent> s :action AceAction<CR>
 
 " Inserts empty line(s) without leaving normal mode
 nnoremap <silent> <leader>0 :action EditorStartNewLine<CR>
