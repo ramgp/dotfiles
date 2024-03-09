@@ -19,7 +19,12 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
+function td() {
+  mkdir -p $@ && cd ${@:$#}
+}
+
 alias md='mkdir -p'
+alias rd='rm -rf'
 
 function d () {
   if [[ -n $1 ]]; then
@@ -61,14 +66,18 @@ alias gsud="git switch develop && git pull -r"
 alias gud="git update-ref refs/heads/develop origin/develop"
 alias gsb="git switch"
 
-if (( $+commands[exa] )); then
-  alias ll="exa --icons -l --group-directories-first"
-  alias llt="exa --tree --icons -l --group-directories-first"
-  alias la="exa --icons -la --group-directories-first"
-  alias lat="exa --tree --icons -la --group-directories-first"
-  alias l="exa --icons -1a --group-directories-first"
+if (( $+commands[eza] )); then
+  alias ll="eza --icons -l --group-directories-first"
+  alias llt="eza --tree --icons -l --group-directories-first"
+  alias la="eza --icons -la --group-directories-first"
+  alias lat="eza --tree --icons -la --group-directories-first"
+  alias l="eza --icons -1a --group-directories-first"
   alias lo="la -snew"
-  alias tree="exa --tree"
+  alias tree="eza --tree --icons"
+fi
+
+if (( $+commands[docker] )); then
+    alias se='docker run --rm -it -p 4444:4444 -p 7900:7900 -e SE_NODE_MAX_SESSIONS=4 -e SCREEN_WIDTH=1920 -e SCREEN_HEIGHT=1080 --shm-size 3g seleniarm/standalone-chromium:latest'
 fi
 
 if (( $+commands[docker-compose] )); then
@@ -83,11 +92,8 @@ if (( $+commands[podman] )); then
   alias pm="podman machine"
   alias pmd="podman machine stop"
   alias pmu="podman machine start"
+  alias se='podman run --rm -it -p 4444:4444 -p 7900:7900 -e SE_NODE_MAX_SESSIONS=4 -e SCREEN_WIDTH=1920 -e SCREEN_HEIGHT=1080 --shm-size 3g seleniarm/standalone-chromium:latest'
 fi
-
-function td() {
-  mkdir -p $@ && cd ${@:$#}
-}
 
 alias serve='python3 -m http.server'
 alias jj='pbpaste | jsonpp | pbcopy'
@@ -95,4 +101,3 @@ alias jj='pbpaste | jsonpp | pbcopy'
 # Lists the ten most used commands.
 alias hxstat="history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head"
 
-alias se='podman run --rm -it -p 4444:4444 -p 7900:7900 -e SE_NODE_MAX_SESSIONS=4 -e SCREEN_WIDTH=1920 -e SCREEN_HEIGHT=1080 --shm-size 3g seleniarm/standalone-chromium:latest'
