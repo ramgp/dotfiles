@@ -9,15 +9,19 @@ set -g theme_date_format "+%H:%M %a %m/%d"
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
+set -q GOPATH || set -gx GOPATH $HOME/prg/go
+
 # set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 if status --is-interactive
     fish_vi_key_bindings
+    fzf_configure_bindings --directory=\cf
+    set fzf_fd_opts --hidden --max-depth 5
 
     eval (/opt/homebrew/bin/brew shellenv)
 
     fish_add_path -Pmp $HOME/.cargo/bin /opt/homebrew/opt/ncurses/bin /opt/homebrew/opt/curl/bin
-    fish_add_path -Pa $HOME/.local/bin /usr/local/bin
+    fish_add_path -Pa $HOME/.local/bin /usr/local/bin $HOME/.local/share/bob/nvim-bin $GOPATH/bin
 
     set -Ux PYENV_ROOT $HOME/.pyenv
     set -gx N_PREFIX $HOME/.local/n
@@ -44,6 +48,28 @@ if status --is-interactive
     end
 
     abbr --add dotdot --regex '^\.\.+$' --function multicd
+
+    function bind_bang
+        switch (commandline -t)[-1]
+            case "!"
+                commandline -t -- $history[1]
+                commandline -f repaint
+            case "*"
+                commandline -i !
+        end
+    end
+
+    function bind_dollar
+        switch (commandline -t)[-1]
+            case "!"
+                commandline -f backward-delete-char history-token-search-backward
+            case "*"
+                commandline -i '$'
+        end
+    end
+
+    bind -M insert ! bind_bang
+    bind -M insert '$' bind_dollar
 
     bind -M default ^ beginning-of-line
     bind -M insert \ce end-of-line
