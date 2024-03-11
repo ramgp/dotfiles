@@ -1,20 +1,34 @@
 function set_theme
     set -l cfg $HOME/.config
     set -l kitty_theme_overrides $cfg/kitty/theme.conf
-    set -l kitty_theme $cfg/kitty/themes/catppuccin/mocha.conf
+    set -l kitty_theme $cfg/kitty/themes/Catppuccin-Mocha.conf
 
     if is_system_appearence_dark
         sd latte mocha $cfg/bat/config
 
-        ln -sf $cfg/kitty/themes/catppuccin_dark.conf $kitty_theme_overrides
+        ln -sf $cfg/kitty/themes/Catppuccin-Mocha.conf $kitty_theme_overrides
+
+        set -Ux FZF_DEFAULT_OPTS "\
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--cycle --layout=reverse --border --height=90% \
+--preview-window=wrap --marker=\"*\""
 
         # change_theme "Catppuccin Mocha"
         fish_config theme save "Catppuccin Mocha"
     else
         sd mocha latte $cfg/bat/config
 
-        set kitty_theme $cfg/kitty/themes/catppuccin/latte.conf
-        ln -sf $cfg/kitty/themes/catppuccin_light.conf $kitty_theme_overrides
+        set kitty_theme $cfg/kitty/themes/Catppuccin-Latte.conf
+        ln -sf $cfg/kitty/themes/Catppuccin-Latte.conf $kitty_theme_overrides
+
+        set -Ux FZF_DEFAULT_OPTS "\
+--color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+--color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39 \
+--cycle --layout=reverse --border --height=90% \
+--preview-window=wrap --marker=\"*\""
 
         # change_theme "Catppuccin Latte"
         fish_config theme save "Catppuccin Latte"
@@ -22,7 +36,7 @@ function set_theme
 
     if set -q KITTY_WINDOW_ID
         kitty @ --password="fish_shell" set-colors -ac $kitty_theme
-        kitty @ --password="fish_shell" set-colors -ac $kitty_theme_overrides
+        # kitty @ --password="fish_shell" set-colors -ac $kitty_theme_overrides
     end
 end
 
