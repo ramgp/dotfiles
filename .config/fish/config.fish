@@ -14,8 +14,6 @@ set -q GOPATH || set -gx GOPATH $HOME/prg/go
 # set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 if status --is-interactive
-    fish_vi_key_bindings
-    fzf_configure_bindings --directory=\cf
     set fzf_fd_opts --hidden --max-depth 5
 
     eval (/opt/homebrew/bin/brew shellenv)
@@ -68,6 +66,7 @@ if status --is-interactive
         end
     end
 
+    fish_vi_key_bindings
     bind -M insert ! bind_bang
     bind -M insert '$' bind_dollar
 
@@ -76,6 +75,8 @@ if status --is-interactive
     bind -M insert \ca beginning-of-line
     bind -M insert \e\[A history-prefix-search-backward
     bind -M insert \e\[B history-prefix-search-forward
+
+    fzf_configure_bindings --directory=\cf
 
     zoxide init fish | source
 end
