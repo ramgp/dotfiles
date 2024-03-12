@@ -194,4 +194,9 @@ return {
       })
     end,
   },
+  {
+    "smjonas/inc-rename.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
