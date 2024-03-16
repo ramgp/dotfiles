@@ -17,11 +17,10 @@ abbr -a g git
 abbr -a gl "git pull --rebase"
 abbr -a gf "git fetch origin --prune"
 abbr -a gh "git rev-parse --short=8 HEAD"
-abbr -a gbc "git rev-parse --abbrev-ref HEAD"
 abbr -a gsud "git switch develop && git pull -r"
 abbr -a gud "git update-ref refs/heads/develop origin/develop"
-abbr -a gsb "git switch"
-abbr -a gbc "git switch -c"
+alias -s gsb "git switch"
+alias -s gbc "git switch -c"
 abbr -a gm "git merge"
 abbr -a ga "git add"
 
