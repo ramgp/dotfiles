@@ -4,6 +4,7 @@
 
 vim.keymap.set({ "n", "v" }, "x", '"_x', { desc = "Delete without copying", silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>v", '"_dP', { desc = "Direct paste", silent = true })
+vim.keymap.set({ "n", "x" }, "<leader>p", [["0p]], { desc = "paste from yank register", silent = true })
 vim.keymap.set("n", "<leader>y", '"_dd', { desc = "Real delete", silent = true })
 vim.keymap.set("v", "<leader>y", '"_d', { desc = "Real delete", silent = true })
 vim.keymap.set("i", "jj", "<esc>", { desc = "Exit insert", silent = true })

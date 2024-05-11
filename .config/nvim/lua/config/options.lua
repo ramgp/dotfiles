@@ -1,11 +1,15 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
-vim.opt.title = true
-vim.opt.titlelen = 0 -- do not shorten title
-vim.opt.titlestring = '%t: %{expand("%:~:.:h")}'
+---@diagnostic disable-next-line: undefined-global
+local opt = vim.opt
 
-vim.opt.colorcolumn = "80,100"
+opt.title = true
+opt.titlelen = 0 -- do not shorten title
+opt.titlestring = '%t: %{expand("%:~:.:h")}'
+
+opt.scrolloff = 10 -- Columns of context
+opt.colorcolumn = "80,100"
 
 -- disable some extension providers
 -- vim.g.loaded_python3_provider = 0
@@ -15,8 +19,8 @@ vim.g.loaded_perl_provider = 0
 
 vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python"
 
-vim.opt.timeoutlen = 400
-vim.opt.ttimeoutlen = 0
+opt.timeoutlen = 400
+opt.ttimeoutlen = 0
 
 if vim.g.neovide then
   vim.g.neovide_cursor_animation_length = 0
