@@ -24,7 +24,7 @@ map <leader>e :action RecentFiles<CR>
 map <leader>f :action Find<CR>
 map <leader>g :action GotoLine<CR>
 map <leader>h :action Replace<CR>
-map <leader>i :action ImplementMethods<CR>
+map <leader>i :action Inline<CR>
 map <leader>j <C-d>
 " map <leader>j :action AceAction<CR>
 map <leader>k <C-u>
