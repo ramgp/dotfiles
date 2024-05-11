@@ -25,13 +25,11 @@ abbr -a gm "git merge"
 abbr -a ga "git add"
 
 if command -sq eza
-    alias -s ll "eza --icons -l --group-directories-first"
-    alias -s llt "eza --tree --icons -l --group-directories-first"
-    alias -s la "eza --icons -la --group-directories-first"
-    alias -s lat "eza --tree --icons -la --group-directories-first"
-    alias -s l "eza --icons -1a --group-directories-first"
-    alias -s lo "eza --icons -la --group-directories-first -snew"
-    alias -s tree "eza --icons --tree"
+    alias -s l "eza --icons -1a --group-directories-first --ignore-glob .git"
+    alias -s ll "eza --icons -l --group-directories-first --no-permissions --no-user"
+    alias -s la "ll -a --ignore-glob .git"
+    alias -s lo "la -snew"
+    alias -s tree "eza -a --icons --tree --group-directories-first --ignore-glob .git"
 end
 
 if command -sq docker-compose
