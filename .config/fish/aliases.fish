@@ -7,7 +7,7 @@ abbr -a - cd -
 abbr -a v nvim
 abbr -a rd rm -rf
 
-abbr -a tmux "TERM=xterm-256color command tmux"
+alias -s tmux "TERM=xterm-256color command tmux"
 abbr -a myip 'curl ifconfig.co'
 
 alias -s 0ad "$HOME/prg/0ad/binaries/system/pyrogenesis"
@@ -25,11 +25,14 @@ abbr -a gm "git merge"
 abbr -a ga "git add"
 
 if command -sq eza
-    alias -s l "eza --icons -1a --group-directories-first --ignore-glob .git"
-    alias -s ll "eza --icons -l --group-directories-first --no-permissions --no-user"
-    alias -s la "ll -a --ignore-glob .git"
+    set -l ignore_globs "'.git|.DS_Store'"
+    set -l D1 --group-directories-first
+
+    alias -s l "eza --icons -1a $D1 -I $ignore_globs"
+    alias -s ll "eza --icons -l $D1 --no-permissions --no-user"
+    alias -s la "ll -a -I $ignore_globs"
     alias -s lo "la -snew"
-    alias -s tree "eza -a --icons --tree --group-directories-first --ignore-glob .git"
+    alias -s tree "eza -a --icons --tree $D1 -I $ignore_globs"
 end
 
 if command -sq docker-compose

@@ -67,13 +67,22 @@ alias gud="git update-ref refs/heads/develop origin/develop"
 alias gsb="git switch"
 
 if (( $+commands[eza] )); then
-  alias ll="eza --icons -l --group-directories-first"
-  alias llt="eza --tree --icons -l --group-directories-first"
-  alias la="eza --icons -la --group-directories-first"
-  alias lat="eza --tree --icons -la --group-directories-first"
-  alias l="eza --icons -1a --group-directories-first"
+  ignore_globs="'.git|.DS_Store'"
+  D1=--group-directories-first
+
+  alias l="eza --icons -1a $D1 -I $ignore_globs"
+  alias ll="eza --icons -l $D1 --no-permissions --no-user"
+  alias la="ll -a -I $ignore_globs"
   alias lo="la -snew"
-  alias tree="eza --tree --icons"
+  alias tree="eza -a --icons --tree $D1 -I $ignore_globs"
+
+  # alias ll="eza --icons -l --group-directories-first"
+  # alias llt="eza --tree --icons -l --group-directories-first"
+  # alias la="eza --icons -la --group-directories-first"
+  # alias lat="eza --tree --icons -la --group-directories-first"
+  # alias l="eza --icons -1a --group-directories-first"
+  # alias lo="la -snew"
+  # alias tree="eza --tree --icons"
 fi
 
 if (( $+commands[docker] )); then
