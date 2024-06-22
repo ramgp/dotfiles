@@ -60,9 +60,22 @@ return {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     opts = function(_, opts)
+      local logo = [[
+         ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
+         ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    
+         ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       
+         ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         
+         ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║           
+         ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝           
+      ]]
+
+      logo = string.rep("\n", 3) .. logo .. "\n"
+
       opts.theme = "hyper"
+
       local config = {
-        header = opts.config.header,
+        header = vim.split(logo, "\n"),
+        -- header = opts.config.header,
         -- week_header = {
         --   enable = true,
         -- },
@@ -124,12 +137,12 @@ return {
         -- action = func(path) vim.cmd('Telescope find_files cwd=' .. path) end
         project = {
           enable = true,
-          limit = 8,
+          limit = 4,
           icon = "󰰺 ",
           label = " Projects",
           action = "Telescope find_files cwd=",
         },
-        mru = { limit = 10, icon = " ", label = " Recent files", cwd_only = false },
+        mru = { limit = 6, icon = " ", label = " Recent files", cwd_only = false },
         footer = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
@@ -193,10 +206,5 @@ return {
         end,
       })
     end,
-  },
-  {
-    "smjonas/inc-rename.nvim",
-    event = "VeryLazy",
-    opts = {},
   },
 }
