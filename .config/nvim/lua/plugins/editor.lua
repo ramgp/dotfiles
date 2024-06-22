@@ -112,4 +112,14 @@ return {
       { "<leader>4", "<cmd>Grapple select index=4<cr>", desc = "Grapple select 4" },
     },
   },
+  {
+    "smjonas/inc-rename.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+  {
+    "tris203/precognition.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
