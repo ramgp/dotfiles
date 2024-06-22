@@ -4,6 +4,8 @@ unsetopt correct
 unsetopt correct_all
 
 # History config
+HISTDUP=erase
+setopt INC_APPEND_HISTORY        # Live update the history file
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
 setopt SHARE_HISTORY             # Share history between all sessions.
@@ -20,3 +22,13 @@ HISTFILE="${HISTFILE:-${ZDOTDIR:-$HOME}/.zsh_history}"  # The path to the histor
 HISTSIZE=10000                   # The maximum number of events to save in the internal history.
 SAVEHIST=10000                   # The maximum number of events to save in the history file.
 
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+LS_CMD='ls --color $realpath'
+if (( $+commands[eza] )); then
+  LS_CMD='eza --icons $realpath'
+fi
+zstyle ':fzf-tab:complete:cd:*' fzf-preview $LS_CMD
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview $LS_CMD

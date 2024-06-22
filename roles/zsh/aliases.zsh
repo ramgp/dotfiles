@@ -3,6 +3,7 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
+alias -g ..='cd ..'
 alias -g ...='cd ../..'
 alias -g ....='cd ../../..'
 alias -g .....='cd ../../../..'
@@ -43,7 +44,7 @@ alias pg='ps -ef | rg'
 alias pkill="pkill -9 -f "
 alias lj='jobs'
 
-alias s="exec zsh"
+alias s="source $XDG_CONFIG_HOME/zsh/.zshrc"
 alias vi="nvim"
 alias v="nvim"
 
@@ -75,14 +76,6 @@ if (( $+commands[eza] )); then
   alias la="ll -a -I $ignore_globs"
   alias lo="la -snew"
   alias tree="eza -a --icons --tree $D1 -I $ignore_globs"
-
-  # alias ll="eza --icons -l --group-directories-first"
-  # alias llt="eza --tree --icons -l --group-directories-first"
-  # alias la="eza --icons -la --group-directories-first"
-  # alias lat="eza --tree --icons -la --group-directories-first"
-  # alias l="eza --icons -1a --group-directories-first"
-  # alias lo="la -snew"
-  # alias tree="eza --tree --icons"
 fi
 
 if (( $+commands[docker] )); then

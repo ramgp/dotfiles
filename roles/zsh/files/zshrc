@@ -5,32 +5,67 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-setopt inc_append_history
-
 source $HOME/.dotfiles/roles/zsh/env.zsh
 source $HOME/.dotfiles/roles/zsh/path.zsh
-source $HOME/.dotfiles/roles/zsh/config.zsh
 
 # Enable vim mode
 bindkey -v
 KEYTIMEOUT=1
 
-source "$ZDOTDIR/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/core"
 
-# zinit ice wait lucid atload"zicompinit; zicdreplay" blockf for \
-#     zsh-users/zsh-completions
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# reloading the config destroys it 
+if [[ ! -n ${ZINIT} ]]; then
+  declare -A ZINIT 
+  ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME"/zcompdump/zcompdump-zinit
+fi
+
+if (( ${+commands[eza]} )); then
+  ZINIT[LIST_COMMAND]='eza --color=always --tree --icons -L3'
+elif (( ${+commands[tree]} )); then
+  ZINIT[LIST_COMMAND]='tree -L 3 -C --charset utf-8'
+else
+  ZINIT[LIST_COMMAND]='ls --tree'
+fi
+
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# autoload -Uz _zinit
+# (( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Add in Powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+zinit ice wait lucid; zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
 
 zinit for atload"zicompinit; zicdreplay" \
     blockf lucid wait zsh-users/zsh-completions
 
-zinit light zsh-users/zsh-autosuggestions
-zinit ice wait lucid; zinit light zdharma-continuum/fast-syntax-highlighting
+# zinit ice wait lucid; zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light Aloxaf/fzf-tab
 zinit light trystan2k/zsh-tab-title
 zinit ice wait lucid; zinit light sineto/web-search
+zinit load atuinsh/atuin
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# Add in snippets
+zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -Uz compinit && compinit
+
+zinit cdreplay -q
+
+source $HOME/.dotfiles/roles/zsh/config.zsh
 
 [ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 [ -f $HOME/.r1_aliases ] && source $HOME/.r1_aliases
@@ -42,15 +77,9 @@ fi
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
 # Cycle through history based on characters already typed on the line
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Use rg to respect .gitignore
 export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
@@ -59,9 +88,7 @@ if (($+commands[rbenv])); then
   eval "$(rbenv init -)"
 fi
 
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-
-[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
+# [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
@@ -101,6 +128,8 @@ source $HOME/.dotfiles/roles/zsh/aliases.zsh
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/roles/zsh/files/p10k.zsh.
 [[ ! -f ~/.dotfiles/roles/zsh/files/p10k.zsh ]] || source ~/.dotfiles/roles/zsh/files/p10k.zsh
 
+# eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/omp/cfg.toml)"
+
 # p10k prompt custom colors =====================
   # typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
@@ -114,9 +143,9 @@ source $HOME/.dotfiles/roles/zsh/aliases.zsh
   
   ##################################[ dir: current directory ]##################################
   # Current directory background color.
-  # typeset -g POWERLEVEL9K_DIR_BACKGROUND=5
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=25
   # Default current directory foreground color.
-  # typeset -g POWERLEVEL9K_DIR_FOREGROUND=236
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=15
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
@@ -129,5 +158,4 @@ source $HOME/.dotfiles/roles/zsh/aliases.zsh
   # typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=237
   # Display anchor directory segments in bold.
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
-
 
