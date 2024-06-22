@@ -98,7 +98,10 @@ if (( $+commands[podman] )); then
 fi
 
 alias serve='python3 -m http.server'
-alias jj='pbpaste | jsonpp | pbcopy'
+
+if [[ $(uname) == "Darwin" ]]; then
+  alias jj='pbpaste | jsonpp | pbcopy'
+fi
 
 # Lists the ten most used commands.
 alias hxstat="history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head"
