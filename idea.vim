@@ -1,3 +1,5 @@
+let mapleader = " "
+
 set incsearch
 set number
 set relativenumber
@@ -6,6 +8,8 @@ set timeoutlen=400
 set ttimeoutlen=0
 set clipboard=unnamedplus
 set scrolloff=10
+
+" enable emulated plugins
 set highlightedyank
 set surround
 " set commentary
@@ -14,7 +18,12 @@ imap jj <Esc>
 imap jk <Esc>
 imap kj <Esc>
 
-let mapleader = " "
+noremap c "_c
+noremap C "_C
+" noremap d "_d
+" noremap D "_D
+noremap x "_x
+
 map <leader>a :action $SelectAll<CR>
 map <leader>b :action GotoDeclaration<CR>
 map <leader>c :action $Copy<CR>
@@ -40,7 +49,7 @@ map <leader>u df(f,cf".<Esc>f"df)
 " map <leader>u :s/\(.*\)\(=\|:\)\sv6Utils.getValueAt(\(.*\),\s"\(.*\)"\s)/\1\2\3.\4<CR>
 map <leader>v :action $Paste<CR>
 map <leader>w ciw
-map <leader>x :action EditorDeleteLine<CR> <Esc>
+map <leader>x :action EditorCut<CR> <Esc>
 map <leader>y :action EditorDeleteLine<CR> <Esc>
 map <leader>z :action Vcs.RollbackChangedLines<CR>
 map <leader>[ :action EditorCodeBlockStart<CR>
