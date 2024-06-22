@@ -77,7 +77,9 @@ if status --is-interactive
     bind -M insert \e\[A history-prefix-search-backward
     bind -M insert \e\[B history-prefix-search-forward
 
-    fzf_configure_bindings --directory=\cf
+    #fzf_configure_bindings --directory=\cf
+
+    atuin init fish | source
 
     zoxide init fish | source
 end
