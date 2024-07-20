@@ -51,7 +51,7 @@ alias v="nvim"
 alias timezsh="time zsh -i -c echo"
 
 alias tmux='TERM=xterm-256color tmux -f "$XDG_CONFIG_HOME"/tmux/.tmux.conf'
-alias tmx='TERM=xterm-256color /usr/bin/tmux -f "$HOME"/.dotfiles/.tmux.conf'
+alias tmx='TERM=xterm-256color command tmux -f "$HOME"/.tmux.conf'
 alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh nosplash"
 alias myip='curl ifconfig.co'
 
