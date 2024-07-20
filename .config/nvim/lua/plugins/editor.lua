@@ -117,9 +117,4 @@ return {
     event = "VeryLazy",
     opts = {},
   },
-  {
-    "tris203/precognition.nvim",
-    event = "VeryLazy",
-    opts = {},
-  },
 }
