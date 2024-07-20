@@ -83,7 +83,7 @@ return {
           -- action can be a function type
           -- { desc = string, group = 'highlight group', key = 'shortcut key', action = 'action when you press key' },
           {
-            action = "Telescope find_files",
+            action = "lua LazyVim.pick()()",
             desc = " Find file",
             icon = " ",
             key = "f",
@@ -101,7 +101,7 @@ return {
           --   key = "g",
           -- },
           {
-            action = [[lua require("lazyvim.util").telescope.config_files()()]],
+            action = "lua LazyVim.pick.config_files()()",
             desc = " Config",
             icon = " ",
             key = "c",
@@ -205,6 +205,22 @@ return {
           }
         end,
       })
+    end,
+  },
+  {
+    "echasnovski/mini.icons",
+    opts = {},
+    lazy = true,
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        -- needed since it will be false when loading and mini will fail
+        package.loaded["nvim-web-devicons"] = {}
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
     end,
   },
 }
