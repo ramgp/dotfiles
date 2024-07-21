@@ -78,8 +78,8 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Cycle through history based on characters already typed on the line
-bindkey "${terminfo[kcuu1]}" history-beginning-search-backward
-bindkey "${terminfo[kcud1]}" history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # Use rg to respect .gitignore
 export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
