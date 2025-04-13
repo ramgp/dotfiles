@@ -12,10 +12,10 @@ set scrolloff=10
 " enable emulated plugins
 set highlightedyank
 set surround
+set mini-ai
 " set commentary
 
 imap jj <Esc>
-imap jk <Esc>
 imap kj <Esc>
 
 noremap c "_c
