@@ -5,6 +5,7 @@ function set_theme
 
     if is_system_appearence_dark
         sd latte mocha $cfg/bat/config
+        sd '"catppuccin_latte"' '"catppuccin_mocha"' "$cfg/starship.toml"
 
         ln -sf $cfg/kitty/themes/Catppuccin-Mocha.conf $kitty_theme_overrides
 
@@ -19,6 +20,7 @@ function set_theme
         fish_config theme save "Catppuccin Mocha"
     else
         sd mocha latte $cfg/bat/config
+        sd '"catppuccin_mocha"' '"catppuccin_latte"' "$cfg/starship.toml"
 
         set kitty_theme $cfg/kitty/themes/Catppuccin-Latte.conf
         ln -sf $cfg/kitty/themes/Catppuccin-Latte.conf $kitty_theme_overrides

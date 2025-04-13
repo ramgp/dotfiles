@@ -12,7 +12,7 @@ set -gx VISUAL nvim
 
 set -q GOPATH || set -gx GOPATH $HOME/prg/go
 
-# set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -x MANPAGER "NVIM_APPNAME=nvman nvim +Man!"
 
 if status --is-interactive
     set fzf_fd_opts --hidden --max-depth 5
@@ -82,4 +82,17 @@ if status --is-interactive
     atuin init fish | source
 
     zoxide init fish | source
+
+    function starship_transient_prompt_func
+        starship module custom.time
+        starship module fill
+        # starship module character
+    end
+
+    function starship_transient_rprompt_func
+        starship module status
+    end
+
+    starship init fish | source
+    enable_transience
 end

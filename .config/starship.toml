@@ -1,0 +1,210 @@
+format = """
+$directory\
+$fill\
+$git_branch\
+$git_commit\
+$git_status\
+$nodejs\
+$bun\
+$deno\
+$shell\
+$time\
+$username\
+$os\
+$line_break\
+$cmd_duration$character\
+"""
+
+palette = "catppuccin_latte"
+add_newline = true
+continuation_prompt = '[❯❯](bold green) '
+
+[os]
+format = '(fg:yellow)[█](fg:red)[$symbol ](fg:mantle bg:red)[](fg:red)'
+disabled = true
+
+[directory]
+format = '[ $read_only$truncation_symbol$path](fg:crust bg:blue)[](fg:blue)'
+home_symbol = " ~"
+truncation_symbol = '󰷏 ../'
+truncation_length = 4
+truncate_to_repo = false
+read_only = ' '
+read_only_style = ''
+
+[git_branch]
+format = '(fg:text)[█](fg:green)[$symbol](fg:mantle bg:green)[]($style)[ $branch]($style)'
+style = "fg:green bg:surface0"
+symbol = ' '
+only_attached = true
+ignore_branches = []
+truncation_length = 25
+truncation_symbol = "..."
+always_show_remote = false
+disabled = false
+
+[git_commit]
+format = "(fg:text)[█](fg:green)[ ](fg:mantle bg:green)[]($style)([ ($tag)(@$hash)]($style))"
+style = "fg:green bg:surface0"
+commit_hash_length = 7
+only_detached = true
+tag_symbol = "󰓼 "
+tag_disabled = false
+disabled = false
+
+[git_status]
+style = "fg:green bg:surface0"
+format = '([$ahead_behind]($style))([$all_status]($style))[](fg:surface0)'
+stashed = " *${count}"
+ahead = " ⇡${count}"
+behind = " ⇣${count}"
+up_to_date = ""
+diverged = " ⇡${ahead_count}⇣${behind_count}"
+conflicted = "=${count}"
+deleted = " ×${count}"
+renamed = " »${count}"
+modified = " !${count}"
+staged = " +${count}"
+untracked = " ?${count}"
+ignore_submodules = false
+disabled = false
+
+[git_metrics]
+format = '([([+$added]($added_style))([-$deleted]($deleted_style))](fg:color_git) )'
+added_style = "fg:green"
+deleted_style = "fg:maroon"
+only_nonzero_diffs = true
+disabled = false
+
+[nodejs]
+format = '(fg:text)[█](fg:sky)[$symbol](fg:mantle bg:sky)[](fg:sky bg:surface0)[ $version](fg:sky bg:surface0)[](fg:surface0)'
+detect_files = ["package.json", ".node-version", "!bunfig.toml", "!bun.lockb"]
+
+[fill]
+symbol = ' '
+style = 'fg:text'
+
+[cmd_duration]
+min_time = 500
+format = '(fg:text)[](fg:yellow)[ ](fg:mantle bg:yellow)[ $duration]($style)[](fg:surface0)[ ](fg:text)'
+style = "fg:yellow bg:surface0"
+
+[shell]
+format = '(fg:text)[█](fg:lavender)[ ](fg:mantle bg:lavender)[](fg:lavender bg:surface0)[ $indicator](fg:lavender bg:surface0)[](fg:surface0)'
+disabled = true
+
+[time]
+format = '(fg:text)[█](fg:overlay2)[󰦖 ](fg:mantle bg:overlay2)[](fg:overlay2 bg:surface0)[ $time](bold fg:overlay2 bg:surface0)[█](fg:surface0)'
+time_format = '%H:%M'
+disabled = false
+
+[custom.time]
+command = "date +%T"
+style = "bold fg:overlay2 bg:surface0"
+format = "[ $output]($style)[](fg:surface0)"
+when = true
+
+
+[username]
+format = '(fg:text)[█](fg:yellow)[ ](fg:mantle bg:yellow)[](fg:yellow bg:surface0)[ $user](fg:yellow bg:surface0)[](fg:surface0) '
+show_always = false
+
+[character]
+success_symbol = "[❯](bold fg:green)"
+error_symbol = "[❯](bold fg:red)"
+vicmd_symbol = "[𝛌](bold fg:green)"
+vimcmd_replace_one_symbol = '[𝛌](bold fg:yellow)'
+vimcmd_replace_symbol = '[𝛌](bold fg:yellow)'
+vimcmd_visual_symbol = '[𝛌](bold fg:mauve)'
+
+[os.symbols]
+Alpine = ''
+Amazon = ''
+Android = ''
+Arch = ''
+CentOS = ''
+Debian = ''
+EndeavourOS = ''
+Fedora = ''
+FreeBSD = ''
+Garuda = ''
+Gentoo = ''
+Linux = ''
+Macos = ''
+Manjaro = ''
+Mariner = ''
+Mint = ''
+NetBSD = ''
+NixOS = ''
+OpenBSD = ''
+OpenCloudOS = ''
+openEuler = ''
+openSUSE = ''
+OracleLinux = '⊂⊃'
+Pop = ''
+Raspbian = ''
+Redhat = ''
+RedHatEnterprise = ''
+Solus = ''
+SUSE = ''
+Ubuntu = ''
+Unknown = ''
+Windows = ''
+
+# Palette definitions
+[palettes.catppuccin_latte]
+rosewater = "#dc8a78"
+flamingo = "#dd7878"
+pink = "#ea76cb"
+mauve = "#8839ef"
+red = "#d20f39"
+maroon = "#e64553"
+peach = "#fe640b"
+yellow = "#df8e1d"
+green = "#40a02b"
+teal = "#179299"
+sky = "#04a5e5"
+sapphire = "#209fb5"
+blue = "#1e66f5"
+lavender = "#7287fd"
+text = "#4c4f69"
+subtext1 = "#5c5f77"
+subtext0 = "#6c6f85"
+overlay2 = "#7c7f93"
+overlay1 = "#8c8fa1"
+overlay0 = "#9ca0b0"
+surface2 = "#acb0be"
+surface1 = "#bcc0cc"
+surface0 = "#ccd0da"
+base = "#eff1f5"
+mantle = "#e6e9ef"
+crust = "#dce0e8"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
