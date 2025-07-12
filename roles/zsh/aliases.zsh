@@ -55,11 +55,12 @@ alias tmx='TERM=xterm-256color command tmux -f "$HOME"/.tmux.conf'
 alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh nosplash"
 alias myip='curl ifconfig.co'
 
-alias 0ad="$HOME/prg/code/0ad/binaries/system/pyrogenesis"
+alias 0ad="$HOME/prg/0ad/binaries/system/pyrogenesis"
 
 # git
 alias g=git
-alias gl="git pull --rebase"
+alias gp="git pull"
+alias gu="git push"
 alias gf="git fetch origin"
 alias lgcm="git rev-parse --short HEAD"
 alias cgb="git rev-parse --abbrev-ref HEAD"

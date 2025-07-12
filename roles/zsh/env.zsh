@@ -1,7 +1,4 @@
-if (($+commands[bat])); then
-	export MANROFFOPT="-c"
-	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
+export MANPAGER='NVIM_APPNAME=nvman nvim +Man!'
 
 export GOPATH=$HOME/prg/go
 
