@@ -42,7 +42,7 @@
     </template>
     <template id="es@userDefined" key=".es" provider="builtin.js" language-level="ES6" topmost="false">
       <conditions />
-      <template name="fakeKey" value="v6Utils.ensureString($EXPR$)" toReformat="true" toShortenFQNames="true" />
+      <template name="fakeKey" value="v6Utils.ensureString($EXPR$)" description="" toReformat="true" toShortenFQNames="true" />
     </template>
     <template id="isko@userDefined" key=".isko" provider="builtin.js" language-level="ES5" topmost="false">
       <conditions />
