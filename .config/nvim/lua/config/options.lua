@@ -17,7 +17,7 @@ vim.g.loaded_ruby_provider = 0
 -- vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
-vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python"
+vim.g.python3_host_prog = "$HOME/opt/nvim/bin/python"
 
 opt.timeoutlen = 400
 opt.ttimeoutlen = 0
