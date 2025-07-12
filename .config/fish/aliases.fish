@@ -4,17 +4,20 @@ abbr -a pg 'ps -ef | rg'
 abbr -a pkill "pkill -9 -f "
 abbr -a lj jobs
 abbr -a - cd -
-abbr -a v nvim
 abbr -a rd rm -rf
 
+alias -s v nvim
 alias -s tmux "TERM=xterm-256color command tmux"
-abbr -a myip 'curl ifconfig.co'
+alias -s myip 'curl -4 ifconfig.co'
 
 alias -s 0ad "$HOME/prg/0ad/binaries/system/pyrogenesis"
+alias -s ytf "yt-dlp --list-formats"
+alias -s yta 'yt-dlp -f "bestaudio" --extract-audio --audio-format m4a'
 
 # git
 abbr -a g git
-abbr -a gl "git pull --rebase"
+abbr -a gp "git pull"
+abbr -a gu "git push"
 abbr -a gf "git fetch origin --prune"
 abbr -a gh "git rev-parse --short=8 HEAD"
 abbr -a gsud "git switch develop && git pull -r"
@@ -29,8 +32,8 @@ if command -sq eza
     set -l D1 --group-directories-first
 
     alias -s l "eza --icons -1a $D1 -I $ignore_globs"
-    alias -s ll "eza --icons -l $D1 --no-permissions --no-user"
-    alias -s la "ll -a -I $ignore_globs"
+    alias -s ll "eza --icons -la -I $ignore_globs $D1 --no-permissions --no-user"
+    alias -s la "eza --icons -la $D1 --no-permissions --no-user"
     alias -s lo "la -snew"
     alias -s tree "eza -a --icons --tree $D1 -I $ignore_globs"
 end

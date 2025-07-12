@@ -7,6 +7,7 @@ set -gx FZF_DEFAULT_COMMAND 'rg --hidden --ignore .git -g ""'
 
 set -g theme_date_format "+%H:%M %a %m/%d"
 
+set -gx SUDO_EDITOR nvim
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
