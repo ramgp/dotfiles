@@ -15,7 +15,7 @@ $line_break\
 $cmd_duration$character\
 """
 
-palette = "catppuccin_latte"
+palette = "catppuccin_mocha"
 add_newline = true
 continuation_prompt = '[❯❯](bold green) '
 
@@ -94,14 +94,17 @@ format = '(fg:text)[█](fg:lavender)[ ](fg:mantle bg:lavender)[](fg:la
 disabled = true
 
 [time]
-format = '(fg:text)[█](fg:overlay2)[󰦖 ](fg:mantle bg:overlay2)[](fg:overlay2 bg:surface0)[ $time](bold fg:overlay2 bg:surface0)[█](fg:surface0)'
+format = '(fg:text)[█](fg:subtext0)[󰦖 ](fg:mantle bg:subtext0)[](fg:subtext0 bg:surface0)[ $time](bold fg:subtext0 bg:surface0)[█](fg:surface0)'
 time_format = '%H:%M'
 disabled = false
 
 [custom.time]
+# format = '[ 󰦖 ](fg:mantle bg:overlay2)[ $output](bold fg:overlay2 bg:surface0)[](fg:surface0 bg:green)[](fg:green)'
+# format = '[ 󰦖 ](fg:mantle bg:overlay2)[ $output](bold fg:overlay2 bg:surface0)[](fg:surface0 bg:green)[](bg:yellow fg:green)[](fg:yellow bg:cyan)[](fg:cyan)'
+format = '[ 󰦖 ](fg:mantle bg:subtext0)[ $output ](fg:subtext0 bg:surface0)[](fg:surface0)'
 command = "date +%T"
 style = "bold fg:overlay2 bg:surface0"
-format = "[ $output]($style)[](fg:surface0)"
+# format = "[ $output]($style)[](fg:surface0)"
 when = true
 
 
