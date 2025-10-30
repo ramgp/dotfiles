@@ -3,7 +3,11 @@ set -q XDG_CONFIG_HOME || set -U XDG_CONFIG_HOME $HOME/.config
 set -q XDG_DATA_HOME || set -U XDG_DATA_HOME $HOME/.local/share
 set -q XDG_STATE_HOME || set -U XDG_STATE_HOME $HOME/.local/state
 
-set -gx FZF_DEFAULT_COMMAND 'rg --hidden --ignore .git -g ""'
+# set -gx FZF_DEFAULT_COMMAND 'rg --hidden --ignore .git -g "" -g "!.DS_Store"'
+set -gx FZF_DEFAULT_COMMAND 'fd --hidden --exclude .git --exclude node_modules --exclude .DS_Store'
+set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+# Set options specifically for Ctrl+T file search
+set -gx FZF_CTRL_T_OPTS '--preview "~/.local/bin/bat_preview {}" --height 55%'
 
 set -g theme_date_format "+%H:%M %a %m/%d"
 
@@ -16,6 +20,8 @@ set -q GOPATH || set -gx GOPATH $HOME/prg/go
 set -x MANPAGER "NVIM_APPNAME=nvman nvim +Man!"
 
 if status --is-interactive
+    source $HOME/.dotfiles/.config/fish/functions/fish_title.fish
+
     set fzf_fd_opts --hidden --max-depth 5
 
     eval (/opt/homebrew/bin/brew shellenv)
@@ -29,8 +35,6 @@ if status --is-interactive
 
     fish_add_path -Pa $PYENV_ROOT/bin $HOME/.dotfiles/bin $N_PREFIX/bin $XDG_DATA_HOME/pnpm
 
-    source $HOME/.dotfiles/.config/fish/functions/fish_title.fish
-
     if not functions -q nv
         alias -s nv 'NVIM_APPNAME=launch_nvim nvim' 2>/dev/null
     end
@@ -39,9 +43,6 @@ if status --is-interactive
 
     set aliases $HOME/.dotfiles/.config/fish/aliases.fish
     test -r $aliases && source $aliases 1>/dev/null
-
-    set r1_aliases $HOME/.r1_aliases.fish
-    test -r $r1_aliases && source $r1_aliases 1>/dev/null
 
     function multicd
         echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
@@ -68,19 +69,27 @@ if status --is-interactive
         end
     end
 
+    if functions -q fzf_key_bindings
+        fzf_key_bindings
+    end
+
+    # if functions -q skim_key_bindings
+    #     skim_key_bindings
+    # end
+
     fish_vi_key_bindings
     bind -M insert ! bind_bang
     bind -M insert '$' bind_dollar
 
     bind -M default ^ beginning-of-line
-    bind -M insert \ce end-of-line
-    bind -M insert \ca beginning-of-line
-    bind -M insert \e\[A history-prefix-search-backward
-    bind -M insert \e\[B history-prefix-search-forward
+    bind -M insert ctrl-a beginning-of-line
+    bind -M insert ctrl-e end-of-line
+    bind -M insert up history-prefix-search-backward
+    bind -M insert down history-prefix-search-forward
 
-    #fzf_configure_bindings --directory=\cf
+    # fzf_configure_bindings --directory=\cf
 
-    atuin init fish | source
+    # atuin init fish | source
 
     zoxide init fish | source
 

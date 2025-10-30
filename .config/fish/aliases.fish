@@ -64,7 +64,7 @@ if command -sq cowsay
 end
 
 abbr -a serve 'python3 -m http.server'
-abbr -a jj 'pbpaste | jsonpp | pbcopy'
+abbr -a jf 'pbpaste | jsonpp | pbcopy'
 
 # Lists the ten most used commands.
 alias -s hxstat "history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head"
