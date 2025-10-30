@@ -28,6 +28,8 @@
   branch = auto
   diff = auto
   status = auto
+[pull]
+    rebase = true
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
@@ -64,8 +66,6 @@
 [diff]
   colorMoved = default
   algorithm = histogram
-[includeIf "gitdir:~/prg/r1/"]
-  path = "~/prg/r1/.gitconfig"
 [branch]
   sort = -committerdate
 [alias]
@@ -127,3 +127,10 @@
   # https://www.reddit.com/r/git/comments/ulpmd0/gitignore_template_generator/
   ignore = '!gi() { IFS=","; curl -L -s "https://www.toptal.com/developers/gitignore/api/$*" | tee .gitignore;}; gi'
 
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[advice]
+	detachedHead = false
