@@ -4,28 +4,21 @@ $fill\
 $git_branch\
 $git_commit\
 $git_status\
-$nodejs\
-$bun\
-$deno\
 $shell\
 $time\
 $username\
-$os\
 $line_break\
 $cmd_duration$character\
 """
 
 palette = "catppuccin_mocha"
+# palette = "rose_pine"
 add_newline = true
 continuation_prompt = '[❯❯](bold green) '
 
-[os]
-format = '(fg:yellow)[█](fg:red)[$symbol ](fg:mantle bg:red)[](fg:red)'
-disabled = true
-
 [directory]
-format = '[ $read_only$truncation_symbol$path](fg:crust bg:blue)[](fg:blue)'
-home_symbol = " ~"
+format = '[ $read_only$truncation_symbol$path](fg:background_alt bg:secondary)[](fg:secondary)'
+home_symbol = " ~"
 truncation_symbol = '󰷏 ../'
 truncation_length = 4
 truncate_to_repo = false
@@ -33,9 +26,10 @@ read_only = ' '
 read_only_style = ''
 
 [git_branch]
-format = '(fg:text)[█](fg:green)[$symbol](fg:mantle bg:green)[]($style)[ $branch]($style)'
-style = "fg:green bg:surface0"
-symbol = ' '
+format = '(fg:foreground)[](fg:primary)[$symbol](fg:background_alt bg:primary)[]($style)[$branch]($style)'
+style = "fg:primary bg:surface"
+symbol = ''
+# symbol = ' '
 only_attached = true
 ignore_branches = []
 truncation_length = 25
@@ -44,8 +38,8 @@ always_show_remote = false
 disabled = false
 
 [git_commit]
-format = "(fg:text)[█](fg:green)[ ](fg:mantle bg:green)[]($style)([ ($tag)(@$hash)]($style))"
-style = "fg:green bg:surface0"
+format = "(fg:foreground)[](fg:primary)[](fg:background_alt bg:primary)[]($style)([($tag)(@$hash)]($style))"
+style = "fg:primary bg:surface"
 commit_hash_length = 7
 only_detached = true
 tag_symbol = "󰓼 "
@@ -53,161 +47,141 @@ tag_disabled = false
 disabled = false
 
 [git_status]
-style = "fg:green bg:surface0"
-format = '([$ahead_behind]($style))([$all_status]($style))[](fg:surface0)'
-stashed = " *${count}"
+style = "fg:info bg:surface"
+format = '([$ahead_behind]($style))([$all_status]($style))[](fg:surface)'
+stashed = '[ *${count}](fg:accent_alt bg:surface)'
 ahead = " ⇡${count}"
 behind = " ⇣${count}"
 up_to_date = ""
 diverged = " ⇡${ahead_count}⇣${behind_count}"
 conflicted = "=${count}"
-deleted = " ×${count}"
-renamed = " »${count}"
-modified = " !${count}"
-staged = " +${count}"
+deleted = "[ ×${count}](fg:error bg:surface)"
+renamed = "[ »${count}](fg:success bg:surface)"
+modified = "[ !${count}](fg:warning bg:surface)"
+staged = "[ +${count}](fg:success bg:surface)"
 untracked = " ?${count}"
 ignore_submodules = false
 disabled = false
 
 [git_metrics]
-format = '([([+$added]($added_style))([-$deleted]($deleted_style))](fg:color_git) )'
-added_style = "fg:green"
-deleted_style = "fg:maroon"
+format = '([([+$added]($added_style))([-$deleted]($deleted_style))](fg:foreground) )'
+added_style = "fg:primary"
+deleted_style = "fg:tertiary"
 only_nonzero_diffs = true
 disabled = false
 
 [nodejs]
-format = '(fg:text)[█](fg:sky)[$symbol](fg:mantle bg:sky)[](fg:sky bg:surface0)[ $version](fg:sky bg:surface0)[](fg:surface0)'
+format = '(fg:foreground)[█](fg:info)[$symbol](fg:background_alt bg:info)[](fg:info bg:surface)[ $version](fg:info bg:surface)[](fg:surface)'
+symbol = ' '
 detect_files = ["package.json", ".node-version", "!bunfig.toml", "!bun.lockb"]
 
 [fill]
 symbol = ' '
-style = 'fg:text'
+style = 'fg:foreground'
 
 [cmd_duration]
 min_time = 500
-format = '(fg:text)[](fg:yellow)[ ](fg:mantle bg:yellow)[ $duration]($style)[](fg:surface0)[ ](fg:text)'
-style = "fg:yellow bg:surface0"
+# show_milliseconds = true
+# format = " in $duration "
+# format = '(fg:foreground)[](fg:tertiary)[ ](fg:background_alt bg:tertiary)[ $duration]($style)[](fg:muted)[ ](fg:foreground)'
+format = '(fg:foreground)[](fg:tertiary)[ ](fg:surface bg:tertiary)[ $duration]($style)[](fg:surface)[ ](fg:foreground)'
+style = "fg:tertiary bg:surface"
+disabled = false
+show_notifications = false
+min_time_to_notify = 45000
 
 [shell]
-format = '(fg:text)[█](fg:lavender)[ ](fg:mantle bg:lavender)[](fg:lavender bg:surface0)[ $indicator](fg:lavender bg:surface0)[](fg:surface0)'
-disabled = true
+fish_indicator = ''
+bash_indicator = ''
+zsh_indicator = ''
+format = '(fg:foreground)[](fg:accent)[$indicator ](fg:background_alt bg:accent)[](fg:accent)'
+disabled = false
 
 [time]
-format = '(fg:text)[█](fg:subtext0)[󰦖 ](fg:mantle bg:subtext0)[](fg:subtext0 bg:surface0)[ $time](bold fg:subtext0 bg:surface0)[█](fg:surface0)'
+format = '(fg:foreground)[](fg:subtle)[](fg:background_alt bg:subtle)[](fg:subtle bg:surface)[$time](bold fg:subtle bg:surface)[█](fg:surface)'
 time_format = '%H:%M'
 disabled = false
 
 [custom.time]
-# format = '[ 󰦖 ](fg:mantle bg:overlay2)[ $output](bold fg:overlay2 bg:surface0)[](fg:surface0 bg:green)[](fg:green)'
-# format = '[ 󰦖 ](fg:mantle bg:overlay2)[ $output](bold fg:overlay2 bg:surface0)[](fg:surface0 bg:green)[](bg:yellow fg:green)[](fg:yellow bg:cyan)[](fg:cyan)'
-format = '[ 󰦖 ](fg:mantle bg:subtext0)[ $output ](fg:subtext0 bg:surface0)[](fg:surface0)'
+format = '[＠](fg:background_alt bg:muted)[ $output ](fg:muted bg:surface_alt)[](fg:surface_alt)'
 command = "date +%T"
-style = "bold fg:overlay2 bg:surface0"
-# format = "[ $output]($style)[](fg:surface0)"
+style = "bold fg:foreground bg:surface"
 when = true
 
-
 [username]
-format = '(fg:text)[█](fg:yellow)[ ](fg:mantle bg:yellow)[](fg:yellow bg:surface0)[ $user](fg:yellow bg:surface0)[](fg:surface0) '
+format = '(fg:foreground)[](fg:tertiary)[ ](fg:background_alt bg:tertiary)[](fg:tertiary bg:surface)[$user](fg:tertiary bg:surface)[](fg:surface) '
 show_always = false
 
 [character]
-success_symbol = "[❯](bold fg:green)"
-error_symbol = "[❯](bold fg:red)"
-vicmd_symbol = "[𝛌](bold fg:green)"
-vimcmd_replace_one_symbol = '[𝛌](bold fg:yellow)'
-vimcmd_replace_symbol = '[𝛌](bold fg:yellow)'
-vimcmd_visual_symbol = '[𝛌](bold fg:mauve)'
+success_symbol = "[❯](bold fg:primary)"
+error_symbol = "[❯](bold fg:error)"
+vicmd_symbol = "[𝛌](bold fg:tertiary)"
+vimcmd_replace_one_symbol = '[𝛌](bold fg:warning)'
+vimcmd_replace_symbol = '[𝛌](bold fg:warning)'
+vimcmd_visual_symbol = '[𝛌](bold fg:accent)'
 
-[os.symbols]
-Alpine = ''
-Amazon = ''
-Android = ''
-Arch = ''
-CentOS = ''
-Debian = ''
-EndeavourOS = ''
-Fedora = ''
-FreeBSD = ''
-Garuda = ''
-Gentoo = ''
-Linux = ''
-Macos = ''
-Manjaro = ''
-Mariner = ''
-Mint = ''
-NetBSD = ''
-NixOS = ''
-OpenBSD = ''
-OpenCloudOS = ''
-openEuler = ''
-openSUSE = ''
-OracleLinux = '⊂⊃'
-Pop = ''
-Raspbian = ''
-Redhat = ''
-RedHatEnterprise = ''
-Solus = ''
-SUSE = ''
-Ubuntu = ''
-Unknown = ''
-Windows = ''
-
-# Palette definitions
-[palettes.catppuccin_latte]
-rosewater = "#dc8a78"
-flamingo = "#dd7878"
-pink = "#ea76cb"
-mauve = "#8839ef"
-red = "#d20f39"
-maroon = "#e64553"
-peach = "#fe640b"
-yellow = "#df8e1d"
-green = "#40a02b"
-teal = "#179299"
-sky = "#04a5e5"
-sapphire = "#209fb5"
-blue = "#1e66f5"
-lavender = "#7287fd"
-text = "#4c4f69"
-subtext1 = "#5c5f77"
-subtext0 = "#6c6f85"
-overlay2 = "#7c7f93"
-overlay1 = "#8c8fa1"
-overlay0 = "#9ca0b0"
-surface2 = "#acb0be"
-surface1 = "#bcc0cc"
-surface0 = "#ccd0da"
-base = "#eff1f5"
-mantle = "#e6e9ef"
-crust = "#dce0e8"
+#
+# Semantic colors used by the prompt:
+#
+# primary         Main positive/accent color
+# secondary       Secondary accent
+# tertiary        Third accent / attention
+# accent          Highlight / special accent
+# success         Successful state
+# error           Error / destructive state
+# warning         Warning / attention state
+# foreground      Primary text
+# foreground_muted Secondary text
+# muted           Muted text
+# subtle          Subtle text
+# surface         Main segment background
+# surface_alt     Alternate segment background
+# background      Main theme background
+# background_alt  Darker background
 
 [palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+primary = "#a6e3a1"    # green
+secondary = "#89b4fa"  # blue
+tertiary = "#f9e2af"   # yellow
+accent = "#b4befe"     # lavender
+accent_alt = "#cba6f7" # mauve
+info = "#89dceb"       # sky
 
+success = "#a6e3a1" # green
+error = "#f38ba8"   # red
+warning = "#f9e2af" # yellow
+
+foreground = "#cdd6f4"       # text
+foreground_muted = "#bac2de" # subtext1
+muted = "#a6adc8"            # subtext0
+subtle = "#9399b2"           # overlay2
+
+surface = "#313244"     # surface0
+surface_alt = "#45475a" # surface1
+
+background = "#1e1e2e"     # base
+background_alt = "#181825" # mantle
+
+
+[palettes.rose_pine]
+primary = "#31748f"   # pine
+secondary = "#9ccfd8" # foam
+tertiary = "#f6c177"  # gold
+accent = "#c4a7e7"    # iris
+accent_alt = "#ebbcba" # rose
+info = "#9ccfd8"      # foam
+
+success = "#9ccfd8" # foam
+error = "#eb6f92"   # love
+warning = "#f6c177" # gold
+
+foreground = "#e0def4"       # text
+foreground_muted = "#908caa" # subtle
+muted = "#6e6a86"            # muted
+subtle = "#908caa"           # subtle
+
+surface = "#1f1d2e"     # surface
+surface_alt = "#26233a" # overlay
+
+background = "#191724"     # base
+background_alt = "#21202e" # highlight-low
