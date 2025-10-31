@@ -5,14 +5,21 @@ abbr -a pkill "pkill -9 -f "
 abbr -a lj jobs
 abbr -a - cd -
 abbr -a rd rm -rf
+abbr -a C --position anywhere --set-cursor '| pbcopy'
 
 alias -s v nvim
+alias -s j just
 alias -s tmux "TERM=xterm-256color command tmux"
-alias -s myip 'curl -4 ifconfig.co'
+alias -s myip 'curl -4 -s ifconfig.co'
 
 alias -s 0ad "$HOME/prg/0ad/binaries/system/pyrogenesis"
 alias -s ytf "yt-dlp --list-formats"
-alias -s yta 'yt-dlp -f "bestaudio" --extract-audio --audio-format m4a'
+
+function yta --wraps='yt-dlp' --description 'Download audio as M4A'
+    yt-dlp -f bestaudio --extract-audio --audio-format m4a \
+        -o "$HOME/Downloads/%(artist,creator,uploader|Unknown Artist)s - %(title)s.%(ext)s" \
+        $argv
+end
 
 # git
 abbr -a g git
@@ -27,8 +34,24 @@ alias -s gbc "git switch -c"
 abbr -a gm "git merge"
 abbr -a ga "git add"
 
+# jrnl
+function jn --description 'jrnl wrapper with journal shortcuts'
+    switch "$argv[1]"
+        case w
+            jrnl work $argv[2..-1]
+        case '*'
+            jrnl $argv
+    end
+end
+
+abbr -a jw 'jrnl work'         # work journal
+
+# reading
+abbr -a jnl 'jrnl -n 10'       # last 10 entries, default
+abbr -a jwl 'jrnl work -n 10'  # last 10 entries, work
+
 if command -sq eza
-    set -l ignore_globs "'.git|.DS_Store'"
+    set -l ignore_globs "'.git|.DS_Store|.jj'"
     set -l D1 --group-directories-first
 
     alias -s l "eza --icons -1a $D1 -I $ignore_globs"
@@ -38,10 +61,10 @@ if command -sq eza
     alias -s tree "eza -a --icons --tree $D1 -I $ignore_globs"
 end
 
-if command -sq docker-compose
-    abbr -a dk docker-compose
-    abbr -a dku "docker-compose up -d"
-    abbr -a dkd "docker-compose down"
+if command -sq docker
+    abbr -a dk docker compose
+    abbr -a dku "docker compose up -d"
+    abbr -a dkd "docker compose down"
 end
 
 if command -sq podman
@@ -59,8 +82,15 @@ if command -sq tldr
     alias -s tl 'tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,68% | xargs tldr'
 end
 
-if command -sq cowsay
-    abbr -a moo 'fortune | cowsay'
+# if command -sq cowsay
+#     abbr -a moo 'fortune | cowsay'
+# end
+
+if command -sq brew
+    abbr -a bu 'brew upgrade'
+    abbr -a bn 'brew info'
+    abbr -a bd 'brew u' # Homebrew alias for brew uninstall
+    abbr -a bi 'brew i'
 end
 
 abbr -a serve 'python3 -m http.server'
