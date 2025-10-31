@@ -4,7 +4,7 @@ set -q XDG_DATA_HOME || set -U XDG_DATA_HOME $HOME/.local/share
 set -q XDG_STATE_HOME || set -U XDG_STATE_HOME $HOME/.local/state
 
 # set -gx FZF_DEFAULT_COMMAND 'rg --hidden --ignore .git -g "" -g "!.DS_Store"'
-set -gx FZF_DEFAULT_COMMAND 'fd --hidden --exclude .git --exclude node_modules --exclude .DS_Store'
+set -gx FZF_DEFAULT_COMMAND 'fd --hidden --exclude .git --exclude node_modules --exclude .DS_Store --exclude .jj'
 set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 # Set options specifically for Ctrl+T file search
 set -gx FZF_CTRL_T_OPTS '--preview "~/.local/bin/bat_preview {}" --height 55%'
@@ -24,16 +24,14 @@ if status --is-interactive
 
     set fzf_fd_opts --hidden --max-depth 5
 
+    set -gx ZVM_INSTALL $HOME/.zvm/self
+    set -gx VOLTA_HOME $HOME/.volta
+
     eval (/opt/homebrew/bin/brew shellenv)
 
-    fish_add_path -Pmp $HOME/.cargo/bin /opt/homebrew/opt/ncurses/bin /opt/homebrew/opt/curl/bin
-    fish_add_path -Pa $HOME/.local/bin /usr/local/bin $HOME/.local/share/bob/nvim-bin $GOPATH/bin
-
-    set -Ux PYENV_ROOT $HOME/.pyenv
-    set -gx N_PREFIX $HOME/.local/n
-    set -gx PNPM_HOME $XDG_DATA_HOME/pnpm
-
-    fish_add_path -Pa $PYENV_ROOT/bin $HOME/.dotfiles/bin $N_PREFIX/bin $XDG_DATA_HOME/pnpm
+    fish_add_path -Pmp (/opt/homebrew/bin/brew --prefix rustup)/bin
+    fish_add_path -Pmp $HOME/.cargo/bin $HOME/.local/bin /opt/homebrew/opt/ncurses/bin /opt/homebrew/opt/curl/bin
+    fish_add_path -Pa $VOLTA_HOME/bin /usr/local/bin $GOPATH/bin $HOME/.zvm/bin $ZVM_INSTALL
 
     if not functions -q nv
         alias -s nv 'NVIM_APPNAME=launch_nvim nvim' 2>/dev/null
@@ -69,9 +67,9 @@ if status --is-interactive
         end
     end
 
-    if functions -q fzf_key_bindings
-        fzf_key_bindings
-    end
+    # if functions -q fzf_key_bindings
+    #     fzf_key_bindings
+    # end
 
     # if functions -q skim_key_bindings
     #     skim_key_bindings
@@ -87,9 +85,18 @@ if status --is-interactive
     bind -M insert up history-prefix-search-backward
     bind -M insert down history-prefix-search-forward
 
+    # Override Ctrl+L to use clear -x instead
+    bind ctrl-l 'clear -x; commandline -f repaint'
+
+    # Insert mode
+    bind -M insert ctrl-l 'clear -x; commandline -f repaint'
+
+    # Visual mode
+    bind -M visual ctrl-l 'clear -x; commandline -f repaint'
+
     # fzf_configure_bindings --directory=\cf
 
-    # atuin init fish | source
+    atuin init fish | source
 
     zoxide init fish | source
 
@@ -101,6 +108,14 @@ if status --is-interactive
 
     function starship_transient_rprompt_func
         starship module status
+    end
+
+    if set -q fish_prompt_theme
+        fish_config theme choose $fish_prompt_theme
+    end
+
+    function apply_theme --on-variable=fish_prompt_theme
+        fish_config theme choose $fish_prompt_theme
     end
 
     source $HOME/.dotfiles/.config/fish/functions/set_starship_theme.fish
