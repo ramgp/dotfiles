@@ -27,7 +27,7 @@ function td() {
 alias md='mkdir -p'
 alias rd='rm -rf'
 
-function d () {
+function d() {
   if [[ -n $1 ]]; then
     dirs "$@"
   else
@@ -47,13 +47,14 @@ alias lj='jobs'
 alias s="source $XDG_CONFIG_HOME/zsh/.zshrc"
 alias vi="nvim"
 alias v="nvim"
+alias j="just"
 
 alias timezsh="time zsh -i -c echo"
 
 alias tmux='TERM=xterm-256color tmux -f "$XDG_CONFIG_HOME"/tmux/.tmux.conf'
 alias tmx='TERM=xterm-256color command tmux -f "$HOME"/.tmux.conf'
 alias ws="$HOME/prg/tools/WebStorm/bin/webstorm.sh nosplash"
-alias myip='curl ifconfig.co'
+alias myip='curl -4 -s ifconfig.co'
 
 alias 0ad="$HOME/prg/0ad/binaries/system/pyrogenesis"
 
@@ -68,7 +69,7 @@ alias gsud="git switch develop && git pull -r"
 alias gud="git update-ref refs/heads/develop origin/develop"
 alias gsb="git switch"
 
-if (( $+commands[eza] )); then
+if (($+commands[eza])); then
   ignore_globs="'.git|.DS_Store'"
   D1=--group-directories-first
 
@@ -79,17 +80,17 @@ if (( $+commands[eza] )); then
   alias tree="eza -a --icons --tree $D1 -I $ignore_globs"
 fi
 
-if (( $+commands[docker] )); then
-    alias se='docker run --rm -it -p 4444:4444 -p 7900:7900 -e SE_NODE_MAX_SESSIONS=4 -e SCREEN_WIDTH=1920 -e SCREEN_HEIGHT=1080 --shm-size 3g seleniarm/standalone-chromium:latest'
+if (($+commands[docker])); then
+  alias se='docker run --rm -it -p 4444:4444 -p 7900:7900 -e SE_NODE_MAX_SESSIONS=4 -e SCREEN_WIDTH=1920 -e SCREEN_HEIGHT=1080 --shm-size 3g seleniarm/standalone-chromium:latest'
 fi
 
-if (( $+commands[docker-compose] )); then
-  alias dk=docker-compose
-  alias dku="docker-compose up -d"
-  alias dkd="docker-compose down"
+if (($+commands[docker])); then
+  alias dk='docker compose'
+  alias dku="docker compose up -d"
+  alias dkd="docker compose down"
 fi
 
-if (( $+commands[podman] )); then
+if (($+commands[podman])); then
   alias docker=podman
   alias pod=podman
   alias pm="podman machine"
@@ -100,10 +101,9 @@ fi
 
 alias serve='python3 -m http.server'
 
-if [[ $(uname) == "Darwin" ]]; then
-  alias jj='pbpaste | jsonpp | pbcopy'
-fi
+# if [[ $(uname) == "Darwin" ]]; then
+#   alias jj='pbpaste | jsonpp | pbcopy'
+# fi
 
 # Lists the ten most used commands.
 alias hxstat="history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head"
-

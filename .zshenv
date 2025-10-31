@@ -19,3 +19,5 @@ export LESS="--RAW-CONTROL-CHARS"
 
 [ -f $ZDOTDIR/.zshenv ] && . $ZDOTDIR/.zshenv
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
