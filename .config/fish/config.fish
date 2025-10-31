@@ -103,6 +103,9 @@ if status --is-interactive
         starship module status
     end
 
+    source $HOME/.dotfiles/.config/fish/functions/set_starship_theme.fish
+    set_starship_theme
+
     starship init fish | source
     enable_transience
 end

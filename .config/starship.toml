@@ -12,7 +12,7 @@ $cmd_duration$character\
 """
 
 palette = "catppuccin_mocha"
-# palette = "rose_pine"
+# Fish: set -gx STARSHIP_THEME rose_pine; set -e STARSHIP_THEME restores Mocha.
 add_newline = true
 continuation_prompt = '[❯❯](bold green) '
 
