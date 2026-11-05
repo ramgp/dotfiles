@@ -7,30 +7,18 @@
     - role: git
       tags:
         - git
-    - role: base16-shell
-      tags:
-        - base16-shell
     - role: zsh
       tags:
         - zsh
     - role: fzf
       tags:
         - fzf
-    # - role: nvim
-    #   tags:
-    #     - nvim
-    - role: lvim
-      tags:
-        - lvim
     - role: tmux
       tags:
         - tmux
     - role: ruby
       tags:
         - ruby
-    - role: nvm
-      tags:
-        - nvm
     - role: nodejs
       tags:
         - nodejs
